@@ -65,8 +65,8 @@ flutter:
     - assets/images/gov/democracy.svg
     - assets/images/gov/council.svg
     - assets/images/gov/treasury.svg
-    - assets/images/tokens/KSM.png
-    - assets/images/tokens/DOT.png
+    - assets/images/tokens/PTC.png
+    - assets/images/tokens/XX.png
     - assets/images/public/polkassembly.png
     - assets/images/public/nav_staking.svg
     - assets/images/public/nav_governance.svg

@@ -99,10 +99,10 @@ class PluginXxnetwork extends PolkawalletPlugin {
 
   @override
   final Map<String, Widget> tokenIcons = {
-    'KSM': Image.asset(
-        'packages/polkawallet_plugin_xxnetwork/assets/images/tokens/KSM.png'),
-    'DOT': Image.asset(
-        'packages/polkawallet_plugin_xxnetwork/assets/images/tokens/DOT.png'),
+    'XX': Image.asset(
+        'packages/polkawallet_plugin_xxnetwork/assets/images/tokens/XX.png'),
+    'PTC': Image.asset(
+        'packages/polkawallet_plugin_xxnetwork/assets/images/tokens/PTC.png'),
   };
 
   @override

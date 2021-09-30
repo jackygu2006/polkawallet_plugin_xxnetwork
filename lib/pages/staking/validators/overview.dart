@@ -176,7 +176,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
     // ###### Head卡片
     final dicStaking =
         I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
-    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['DOT'])[0];
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['XX'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final stashInfo = widget.plugin.store.staking.ownStashInfo;
     final overview = widget.plugin.store.staking.overview;

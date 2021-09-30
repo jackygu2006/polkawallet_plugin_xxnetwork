@@ -44,92 +44,92 @@ class Gov extends StatelessWidget {
             ),
             Expanded(
               child: plugin.sdk.api.connectedNode == null
-                  ? Container(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.width / 2),
-                      child: Column(
-                        children: [
-                          CupertinoActivityIndicator(),
-                          Text(dicCommon['node.connecting']),
-                        ],
-                      ),
-                    )
-                  : ListView(
-                      padding: EdgeInsets.all(16),
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 16),
-                          child: GestureDetector(
-                            child: EntryPageCard(
-                              dic['democracy'],
-                              dic['democracy.brief'],
-                              SvgPicture.asset(
-                                'packages/polkawallet_plugin_xxnetwork/assets/images/gov/democracy.svg',
-                                width: 96,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                              color: Colors.transparent,
-                            ),
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(DemocracyPage.route),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 16),
-                          child: GestureDetector(
-                            child: EntryPageCard(
-                              dic['council'],
-                              dic['council.brief'],
-                              SvgPicture.asset(
-                                'packages/polkawallet_plugin_xxnetwork/assets/images/gov/council.svg',
-                                width: 96,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                              color: Colors.transparent,
-                            ),
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(CouncilPage.route),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 16),
-                          child: GestureDetector(
-                            child: EntryPageCard(
-                              dic['treasury'],
-                              dic['treasury.brief'],
-                              SvgPicture.asset(
-                                'packages/polkawallet_plugin_xxnetwork/assets/images/gov/treasury.svg',
-                                width: 96,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                              color: Colors.transparent,
-                            ),
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(TreasuryPage.route),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 16),
-                          child: GestureDetector(
-                            child: EntryPageCard(
-                              'Polkassembly',
-                              dic['polkassembly'],
-                              Image.asset(
-                                'packages/polkawallet_plugin_xxnetwork/assets/images/public/polkassembly.png',
-                                width: 48,
-                              ),
-                              color: Colors.transparent,
-                            ),
-                            onTap: () => Navigator.of(context).pushNamed(
-                              DAppWrapperPage.route,
-                              arguments:
-                                  'https://${plugin.basic.name}.polkassembly.io/',
-                              // "https://polkadot.js.org/apps/",
-                            ),
-                          ),
-                        ),
+                ? Container(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.width / 2),
+                    child: Column(
+                      children: [
+                        CupertinoActivityIndicator(),
+                        Text(dicCommon['node.connecting']),
                       ],
                     ),
+                  )
+                : ListView(
+                    padding: EdgeInsets.all(16),
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 16),
+                        child: GestureDetector(
+                          child: EntryPageCard(
+                            dic['democracy'],
+                            dic['democracy.brief'],
+                            SvgPicture.asset(
+                              'packages/polkawallet_plugin_xxnetwork/assets/images/gov/democracy.svg',
+                              width: 96,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            color: Colors.transparent,
+                          ),
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(DemocracyPage.route),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 16),
+                        child: GestureDetector(
+                          child: EntryPageCard(
+                            dic['council'],
+                            dic['council.brief'],
+                            SvgPicture.asset(
+                              'packages/polkawallet_plugin_xxnetwork/assets/images/gov/council.svg',
+                              width: 96,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            color: Colors.transparent,
+                          ),
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(CouncilPage.route),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 16),
+                        child: GestureDetector(
+                          child: EntryPageCard(
+                            dic['treasury'],
+                            dic['treasury.brief'],
+                            SvgPicture.asset(
+                              'packages/polkawallet_plugin_xxnetwork/assets/images/gov/treasury.svg',
+                              width: 96,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            color: Colors.transparent,
+                          ),
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(TreasuryPage.route),
+                        ),
+                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.only(bottom: 16),
+                      //   child: GestureDetector(
+                      //     child: EntryPageCard(
+                      //       'Polkassembly',
+                      //       dic['polkassembly'],
+                      //       Image.asset(
+                      //         'packages/polkawallet_plugin_xxnetwork/assets/images/public/polkassembly.png',
+                      //         width: 48,
+                      //       ),
+                      //       color: Colors.transparent,
+                      //     ),
+                      //     onTap: () => Navigator.of(context).pushNamed(
+                      //       DAppWrapperPage.route,
+                      //       arguments:
+                      //           'https://${plugin.basic.name}.polkassembly.io/',
+                      //       // "https://polkadot.js.org/apps/",
+                      //     ),
+                      //   ),
+                      // ),
+                    ],
+                  ),
             )
           ],
         ),
