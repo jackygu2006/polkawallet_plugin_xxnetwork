@@ -9,6 +9,7 @@ import 'package:polkawallet_sdk/plugin/index.dart';
 import 'package:polkawallet_sdk/storage/keyring.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
 import 'package:polkawallet_ui/components/roundedButton.dart';
+// import 'package:polkawallet_plugin_xxnetwork/common/constants.dart';
 
 class ProfileContent extends StatefulWidget {
   ProfileContent(
@@ -121,8 +122,8 @@ class _ProfileContentState extends State<ProfileContent> {
         widget.setConnectedNode(null);
       }
       final node = widget.network.nodeList[selected];
-      final res =
-          await widget.network.sdk.api.connectNode(widget.keyring, [node]);
+      final res = await widget.network.sdk.api
+          .connectNode(widget.keyring, [node]);
       widget.setConnectedNode(res);
     }
   }
