@@ -80,6 +80,8 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
   }
 
   void _goToBond({bondExtra = false}) {
+    print('====== _goToBond ======');
+    // $$$$$$
     if (widget.plugin.store.staking.ownStashInfo == null) return;
 
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'common');
@@ -89,7 +91,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
       context: context,
       builder: (_) {
         return CupertinoAlertDialog(
-          title: Text(dicStaking['action.nominate']),
+          title: Text(dicStaking['action.nominate'] + '-4'),
           content: Text(dicStaking['action.nominate.bond']),
           actions: <Widget>[
             CupertinoButton(
@@ -173,7 +175,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
   }
 
   Widget _buildTopCard(BuildContext context) {
-    // ###### Head卡片
+    // Head卡片
     final dicStaking =
         I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
     final symbol = (widget.plugin.networkState.tokenSymbol ?? ['XX'])[0];
@@ -284,7 +286,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                             color: actionButtonColor,
                           ),
                           Text(
-                            dicStaking['action.nominate'],
+                            dicStaking['action.nominate'] + '-5',
                             style: TextStyle(
                                 color: actionButtonColor, fontSize: 12),
                           )
@@ -300,7 +302,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                               color: disabledColor,
                             ),
                             Text(
-                              dicStaking['action.nominate'],
+                              dicStaking['action.nominate'] + '-6',
                               style:
                                   TextStyle(color: disabledColor, fontSize: 12),
                             )
@@ -316,7 +318,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                               Text(
                                 dicStaking[nominators.length > 0
                                     ? 'action.nominee'
-                                    : 'action.nominate'],
+                                    : 'action.nominate'] + '-7',
                                 style: TextStyle(
                                     color: actionButtonColor, fontSize: 12),
                               )
@@ -512,7 +514,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
               .recommendedValidators[widget.plugin.basic.name];
           if (recommendList != null) {
             recommended = _tab == 0
-                ? widget.plugin.store.staking.electedInfo.toList() // ######
+                ? widget.plugin.store.staking.electedInfo.toList()
                 : widget.plugin.store.staking.nextUpsInfo.toList();
             recommended.retainWhere((i) =>
                 widget.plugin.store.staking

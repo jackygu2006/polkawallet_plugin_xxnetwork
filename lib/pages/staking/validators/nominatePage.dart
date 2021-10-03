@@ -34,7 +34,7 @@ class _NominatePageState extends State<NominatePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(dicStaking['action.nominate']),
+        title: Text(dicStaking['action.nominate'] + '-3'),
         centerTitle: true,
       ),
       body: Builder(builder: (BuildContext context) {

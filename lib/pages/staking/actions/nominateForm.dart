@@ -40,7 +40,7 @@ class _NominateFormState extends State<NominateForm> {
         I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
     final targets = _selected.map((i) => i.accountId).toList();
     widget.onNext(TxConfirmParams(
-      txTitle: dicStaking['action.nominate'],
+      txTitle: dicStaking['action.nominate'] + "-1",
       module: 'staking',
       call: 'nominate',
       txDisplay: {'targets': targets.join(', ')},
@@ -246,7 +246,7 @@ class _NominateFormState extends State<NominateForm> {
         Padding(
           padding: EdgeInsets.all(16),
           child: RoundedButton(
-            text: dicStaking['action.nominate'],
+            text: dicStaking['action.nominate'] + "-2", 
             onPressed: _selected.length > 0 ? _setNominee : null,
           ),
         ),
