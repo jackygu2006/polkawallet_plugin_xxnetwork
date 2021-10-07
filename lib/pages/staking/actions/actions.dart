@@ -97,7 +97,9 @@ class _StakingActions extends State<StakingActions> {
   Future<void> _updateStakingInfo() async {
     _tab == 0 ? _updateStakingTxs(page: 0) : _updateStakingRewardTxs();
 
+    print("====== 开始 _updateStakingInfo ======");
     await widget.plugin.service.staking.queryOwnStashInfo();
+    print("====== 结束 _updateStakingInfo ======");
   }
 
   Future<void> _onChangeAccount(KeyPairData acc) async {
@@ -115,6 +117,7 @@ class _StakingActions extends State<StakingActions> {
   }
 
   List<Widget> _buildTxList() {
+    // ###### 操作记录列表
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'common');
     List<Widget> res = [];
     res.addAll(widget.plugin.store.staking.txs.map((i) {
@@ -160,6 +163,7 @@ class _StakingActions extends State<StakingActions> {
   }
 
   List<Widget> _buildRewardsList() {
+    // ###### 收益/罚金 列表
     final int decimals = widget.plugin.networkState.tokenDecimals[0];
     final String symbol = widget.plugin.networkState.tokenSymbol[0];
 
@@ -307,6 +311,7 @@ class _StakingActions extends State<StakingActions> {
             )
           : Column(
               children: <Widget>[
+                // ###### Slash账户
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -346,6 +351,7 @@ class _StakingActions extends State<StakingActions> {
                     )
                   ],
                 ),
+                // ###### Controller账户
                 RowAccount02(
                   acc02: acc02,
                   accountId: widget.plugin.store.staking.ownStashInfo.account
@@ -374,6 +380,7 @@ class _StakingActions extends State<StakingActions> {
                   onAction: _onAction,
                 ),
                 Divider(),
+                // ###### 质押操作按钮
                 StakingActionsPanel(
                   isStash: isStash,
                   isController: isController,
@@ -427,7 +434,7 @@ class _StakingActions extends State<StakingActions> {
             color: Theme.of(context).cardColor,
             padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: MainTabBar(
-              tabs: [dic['txs'], dic['txs.reward']],
+              tabs: [dic['txs'], dic['txs.reward']], // ######
               activeTab: _tab,
               fontSize: 18,
               lineWidth: 6,
@@ -662,10 +669,14 @@ class StakingInfoPanel extends StatelessWidget {
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
     Color actionButtonColor = Theme.of(context).primaryColor;
 
-    String dest = stashInfo.destination;
+    String dest =
+        stashInfo.destination; // $$$$$$ stash数据，如果是{state: null} 怎么处理？
+    print("===== dest1: $dest =====");
     if (dest.contains('account')) {
+      print("====== dest3: $dest ======");
       dest = Fmt.address(jsonDecode(dest)['account']);
     }
+    print("===== dest2: $dest =====");
     return Padding(
       padding: EdgeInsets.only(top: 4, bottom: 4),
       child: Column(
@@ -769,7 +780,7 @@ class StakingInfoPanel extends StatelessWidget {
               ),
               InfoItem(
                 title: dic['bond.reward'],
-                content: dest,
+                content: dest, // ######
                 crossAxisAlignment: CrossAxisAlignment.center,
               ),
               Expanded(

@@ -122,8 +122,11 @@ class ApiStaking {
     print(keyring.current.address);
     final data =
         await api.service.staking.queryOwnStashInfo(keyring.current.address);
-    store.staking.setOwnStashInfo(keyring.current.pubKey, data);
     print("====== plugin: queryOwnStashInfo END ======");
+    print("================================");
+    print("====== plugin: setOwnStashInfo START ======");
+    store.staking.setOwnStashInfo(keyring.current.pubKey, data);
+    print("====== plugin: setOwnStashInfo END ======");
 
     final List<String> addressesNeedIcons =
         store.staking.ownStashInfo?.nominating != null
