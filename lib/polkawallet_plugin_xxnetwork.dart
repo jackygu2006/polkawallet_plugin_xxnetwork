@@ -61,9 +61,10 @@ class PluginXxnetwork extends PolkawalletPlugin {
               : genesis_hash_xxnetwork,
           ss58: 42, //name == network_name_protonet ? 2 : 0,
           primaryColor:
-              name == network_name_protonet ? protonet_black : Colors.pink,
-          gradientColor:
-              name == network_name_protonet ? Color(0xFF555555) : Colors.red,
+              name == network_name_protonet ? protonet_teal : Colors.teal,
+          gradientColor: name == network_name_protonet
+              ? Color(0xFF00897B)
+              : Color(0xFF00897B),
           backgroundImage: AssetImage(
               'packages/polkawallet_plugin_xxnetwork/assets/images/public/bg_$name.png'),
           icon: Image.asset(

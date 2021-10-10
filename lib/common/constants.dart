@@ -20,19 +20,19 @@ const node_list_xxnetwork = [
 
 const home_nav_items = ['staking', 'governance'];
 
-const MaterialColor protonet_black = const MaterialColor(
-  0xFF222222,
+const MaterialColor protonet_teal = const MaterialColor(
+  0xFF00897B,
   const <int, Color>{
-    50: const Color(0xFF555555),
-    100: const Color(0xFF444444),
-    200: const Color(0xFF444444),
-    300: const Color(0xFF333333),
-    400: const Color(0xFF333333),
-    500: const Color(0xFF222222),
-    600: const Color(0xFF111111),
-    700: const Color(0xFF111111),
-    800: const Color(0xFF000000),
-    900: const Color(0xFF000000),
+    50: const Color(0xFFE0F2F1),
+    100: const Color(0xFFB2DFDB),
+    200: const Color(0xFF80CBC4),
+    300: const Color(0xFF4DB6AC),
+    400: const Color(0xFF26A69A),
+    500: const Color(0xFF009688),
+    600: const Color(0xFF00897B),
+    700: const Color(0xFF00796B),
+    800: const Color(0xFF00695C),
+    900: const Color(0xFF004D40),
   },
 );
 
@@ -42,4 +42,3 @@ const String genesis_hash_xxnetwork =
     '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3';
 const String network_name_protonet = 'protonet';
 const String network_name_xxnetwork = 'xxnetwork';
-

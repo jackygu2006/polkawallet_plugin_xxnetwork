@@ -74,11 +74,11 @@ class ReferendumPanel extends StatelessWidget {
                 Expanded(
                   child: Text(
                       '${dic['activate']} ${Fmt.blockToTime(activateLeft.toInt(), blockDuration)}',
-                      style: TextStyle(color: Colors.pink)),
+                      style: TextStyle(color: Colors.teal)),
                 ),
                 Text(
                   '#${Fmt.priceFloorBigInt(bestNumber + activateLeft, 0, lengthFixed: 0)}',
-                  style: TextStyle(color: Colors.pink),
+                  style: TextStyle(color: Colors.teal),
                 )
               ],
             )
