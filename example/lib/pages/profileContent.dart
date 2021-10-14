@@ -123,7 +123,7 @@ class _ProfileContentState extends State<ProfileContent> {
       }
       final node = widget.network.nodeList[selected];
       final res = await widget.network.sdk.api
-          .connectNode(widget.keyring, [node]);
+          .connectNode(widget.keyring, [node]); // $$$$$$
       widget.setConnectedNode(res);
     }
   }
