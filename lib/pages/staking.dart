@@ -26,7 +26,7 @@ class _StakingState extends State<Staking> {
   @override
   Widget build(BuildContext context) {
     var dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
-    var tabs = [dic['actions'], dic['validators']];
+    var tabs = [dic['validators'], dic['actions']];
     return SafeArea(
       child: Container(
         padding: EdgeInsets.only(top: 16),
@@ -45,7 +45,7 @@ class _StakingState extends State<Staking> {
               },
             ),
             Expanded(
-              child: _tab == 1
+              child: _tab == 0
                   ? StakingOverviewPage(widget.plugin, widget.keyring)
                   : StakingActions(widget.plugin, widget.keyring),
             ),
