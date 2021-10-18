@@ -118,15 +118,15 @@ class ApiStaking {
 
   Future<Map> queryOwnStashInfo() async {
     // $$$$$$
-    print("====== plugin: queryOwnStashInfo START ======");
-    print(keyring.current.address);
+    // print("====== plugin: queryOwnStashInfo START ======");
+    // print(keyring.current.address);
     final data =
         await api.service.staking.queryOwnStashInfo(keyring.current.address);
-    print("====== plugin: queryOwnStashInfo END ======");
-    print("================================");
-    print("====== plugin: setOwnStashInfo START ======");
+    // print("====== plugin: queryOwnStashInfo END ======");
+    // print("================================");
+    // print("====== plugin: setOwnStashInfo START ======");
     store.staking.setOwnStashInfo(keyring.current.pubKey, data);
-    print("====== plugin: setOwnStashInfo END ======");
+    // print("====== plugin: setOwnStashInfo END ======");
 
     final List<String> addressesNeedIcons =
         store.staking.ownStashInfo?.nominating != null

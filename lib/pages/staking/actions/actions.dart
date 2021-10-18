@@ -96,10 +96,7 @@ class _StakingActions extends State<StakingActions> {
 
   Future<void> _updateStakingInfo() async {
     _tab == 0 ? _updateStakingTxs(page: 0) : _updateStakingRewardTxs();
-
-    print("====== 开始 _updateStakingInfo ======");
     await widget.plugin.service.staking.queryOwnStashInfo();
-    print("====== 结束 _updateStakingInfo ======");
   }
 
   Future<void> _onChangeAccount(KeyPairData acc) async {
@@ -671,12 +668,9 @@ class StakingInfoPanel extends StatelessWidget {
 
     String dest =
         stashInfo.destination; // $$$$$$ stash数据，如果是{state: null} 怎么处理？
-    print("===== dest1: $dest =====");
     if (dest.contains('account')) {
-      print("====== dest3: $dest ======");
       dest = Fmt.address(jsonDecode(dest)['account']);
     }
-    print("===== dest2: $dest =====");
     return Padding(
       padding: EdgeInsets.only(top: 4, bottom: 4),
       child: Column(
