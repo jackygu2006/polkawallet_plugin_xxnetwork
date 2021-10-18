@@ -80,8 +80,6 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
   }
 
   void _goToBond({bondExtra = false}) {
-    print('====== _goToBond ======');
-    // $$$$$$
     if (widget.plugin.store.staking.ownStashInfo == null) return;
 
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'common');
@@ -91,7 +89,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
       context: context,
       builder: (_) {
         return CupertinoAlertDialog(
-          title: Text(dicStaking['action.nominate'] + '-4'),
+          title: Text(dicStaking['action.nominate']),
           content: Text(dicStaking['action.nominate.bond']),
           actions: <Widget>[
             CupertinoButton(
@@ -286,7 +284,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                             color: actionButtonColor,
                           ),
                           Text(
-                            dicStaking['action.nominate'] + '-5',
+                            dicStaking['action.nominate'],
                             style: TextStyle(
                                 color: actionButtonColor, fontSize: 12),
                           )
@@ -302,7 +300,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                               color: disabledColor,
                             ),
                             Text(
-                              dicStaking['action.nominate'] + '-6',
+                              dicStaking['action.nominate'],
                               style:
                                   TextStyle(color: disabledColor, fontSize: 12),
                             )
@@ -318,7 +316,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                               Text(
                                 dicStaking[nominators.length > 0
                                     ? 'action.nominee'
-                                    : 'action.nominate'] + '-7',
+                                    : 'action.nominate'],
                                 style: TextStyle(
                                     color: actionButtonColor, fontSize: 12),
                               )

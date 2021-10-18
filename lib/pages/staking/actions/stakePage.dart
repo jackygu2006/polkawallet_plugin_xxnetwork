@@ -29,7 +29,9 @@ class _StakePageState extends State<StakePage> {
 
   Future<void> _onStake(TxConfirmParams nominateParams) async {
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'common');
-    final txBond = 'api.tx.staking.bond(...${jsonEncode(_bondParams.params)})';
+    // while sending tx.staking.bond, xxnetwork only support reward type = 0, so we cancel the 3rd params
+    final params = _bondParams.params.sublist(0, 2);
+    final txBond = 'api.tx.staking.bond(...${jsonEncode(params)})';
     final txNominate =
         'api.tx.staking.nominate(...${jsonEncode(nominateParams.params)})';
     final res = await Navigator.of(context).pushNamed(TxConfirmPage.route,

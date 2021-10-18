@@ -27,7 +27,7 @@ class ApiStaking {
       List unlocking = store.staking.ownStashInfo.stakingLedger['unlocking'];
       if (bonded > 0 || unlocking.length > 0) {
         String address = store.staking.ownStashInfo.stashId;
-        print('fetching staking rewards...');
+        print('fetching staking rewards...'); // ######
         Map res = await api.staking.queryAccountRewards(address, eras);
         return res;
       }
@@ -117,16 +117,9 @@ class ApiStaking {
   }
 
   Future<Map> queryOwnStashInfo() async {
-    // $$$$$$
-    // print("====== plugin: queryOwnStashInfo START ======");
-    // print(keyring.current.address);
     final data =
         await api.service.staking.queryOwnStashInfo(keyring.current.address);
-    // print("====== plugin: queryOwnStashInfo END ======");
-    // print("================================");
-    // print("====== plugin: setOwnStashInfo START ======");
     store.staking.setOwnStashInfo(keyring.current.pubKey, data);
-    // print("====== plugin: setOwnStashInfo END ======");
 
     final List<String> addressesNeedIcons =
         store.staking.ownStashInfo?.nominating != null

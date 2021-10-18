@@ -54,7 +54,6 @@ class _ProfileContentState extends State<ProfileContent> {
 
   void _onChangeLang() {
     final langCurrent = widget.locale.toString();
-    print('current: $langCurrent');
     showCupertinoModalPopup(
       context: context,
       builder: (_) => Container(
@@ -76,7 +75,6 @@ class _ProfileContentState extends State<ProfileContent> {
             },
           ),
           onWillPop: () async {
-            print(_langSelected);
             if (_langSelected == null) return true;
             String code = _langOptions[_langSelected];
             if (code != langCurrent) {

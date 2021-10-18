@@ -431,7 +431,7 @@ class _StakingActions extends State<StakingActions> {
             color: Theme.of(context).cardColor,
             padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: MainTabBar(
-              tabs: [dic['txs'], dic['txs.reward']], // ######
+              tabs: [dic['txs'], dic['txs.reward']], // ###### 标签
               activeTab: _tab,
               fontSize: 18,
               lineWidth: 6,
@@ -966,30 +966,31 @@ class StakingActionsPanel extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: Container(
-            width: actionButtonWidth,
-            child: GestureDetector(
-              child: Column(
-                children: <Widget>[
-                  OutlinedCircle(
-                    icon: Icons.arrow_downward,
-                    color: setPayeeDisabled ? disabledColor : actionButtonColor,
-                  ),
-                  Text(
-                    dic['action.reward'],
-                    style: TextStyle(
-                        color: setPayeeDisabled
-                            ? disabledColor
-                            : actionButtonColor,
-                        fontSize: 11),
-                  )
-                ],
-              ),
-              onTap: onSetPayeeTap,
-            ),
-          ),
-        ),
+        // Cancel change the reward method cause xxnetwork don't support methods except default staked
+        // Expanded(
+        //   child: Container(
+        //     width: actionButtonWidth,
+        //     child: GestureDetector(
+        //       child: Column(
+        //         children: <Widget>[
+        //           OutlinedCircle(
+        //             icon: Icons.arrow_downward,
+        //             color: setPayeeDisabled ? disabledColor : actionButtonColor,
+        //           ),
+        //           Text(
+        //             dic['action.reward'],
+        //             style: TextStyle(
+        //                 color: setPayeeDisabled
+        //                     ? disabledColor
+        //                     : actionButtonColor,
+        //                 fontSize: 11),
+        //           )
+        //         ],
+        //       ),
+        //       onTap: onSetPayeeTap,
+        //     ),
+        //   ),
+        // ),
         Expanded(
           child: Container(
             width: actionButtonWidth,
