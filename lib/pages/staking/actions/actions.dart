@@ -11,7 +11,6 @@ import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/redeemPage.da
 import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/rewardDetailPage.dart';
 import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/rewardsChart.dart';
 import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/setControllerPage.dart';
-import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/setPayeePage.dart';
 import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/stakePage.dart';
 import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/stakingDetailPage.dart';
 import 'package:polkawallet_plugin_xxnetwork/pages/staking/actions/unbondPage.dart';
@@ -114,7 +113,6 @@ class _StakingActions extends State<StakingActions> {
   }
 
   List<Widget> _buildTxList() {
-    // ###### 操作记录列表
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'common');
     List<Widget> res = [];
     res.addAll(widget.plugin.store.staking.txs.map((i) {
@@ -160,7 +158,6 @@ class _StakingActions extends State<StakingActions> {
   }
 
   List<Widget> _buildRewardsList() {
-    // ###### 收益/罚金 列表
     final int decimals = widget.plugin.networkState.tokenDecimals[0];
     final String symbol = widget.plugin.networkState.tokenSymbol[0];
 
@@ -308,7 +305,6 @@ class _StakingActions extends State<StakingActions> {
             )
           : Column(
               children: <Widget>[
-                // ###### Slash账户
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -348,7 +344,6 @@ class _StakingActions extends State<StakingActions> {
                     )
                   ],
                 ),
-                // ###### Controller账户
                 RowAccount02(
                   acc02: acc02,
                   accountId: widget.plugin.store.staking.ownStashInfo.account
@@ -377,7 +372,6 @@ class _StakingActions extends State<StakingActions> {
                   onAction: _onAction,
                 ),
                 Divider(),
-                // ###### 质押操作按钮
                 StakingActionsPanel(
                   isStash: isStash,
                   isController: isController,
@@ -385,6 +379,7 @@ class _StakingActions extends State<StakingActions> {
                   bonded: bonded,
                   redeemable: redeemable,
                   controller: acc02,
+                  networkLoading: !hasData,
                   onAction: _onAction,
                 ),
               ],
@@ -431,7 +426,7 @@ class _StakingActions extends State<StakingActions> {
             color: Theme.of(context).cardColor,
             padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: MainTabBar(
-              tabs: [dic['txs'], dic['txs.reward']], // ###### 标签
+              tabs: [dic['txs'], dic['txs.reward']],
               activeTab: _tab,
               fontSize: 18,
               lineWidth: 6,
@@ -666,8 +661,7 @@ class StakingInfoPanel extends StatelessWidget {
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
     Color actionButtonColor = Theme.of(context).primaryColor;
 
-    String dest =
-        stashInfo.destination; // $$$$$$ stash数据，如果是{state: null} 怎么处理？
+    String dest = stashInfo.destination;
     if (dest.contains('account')) {
       dest = Fmt.address(jsonDecode(dest)['account']);
     }
@@ -717,6 +711,19 @@ class StakingInfoPanel extends StatelessWidget {
                   ],
                 ),
               ),
+            ],
+          ),
+          Container(
+            height: 16,
+          ),
+          Row(
+            children: <Widget>[
+              InfoItem(
+                title: dic['available'],
+                content:
+                    Fmt.priceFloorBigInt(available, decimals, lengthMax: 4),
+                crossAxisAlignment: CrossAxisAlignment.center,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -761,48 +768,6 @@ class StakingInfoPanel extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            height: 16,
-          ),
-          Row(
-            children: <Widget>[
-              InfoItem(
-                title: dic['available'],
-                content:
-                    Fmt.priceFloorBigInt(available, decimals, lengthMax: 4),
-                crossAxisAlignment: CrossAxisAlignment.center,
-              ),
-              InfoItem(
-                title: dic['bond.reward'],
-                content: dest, // ######
-                crossAxisAlignment: CrossAxisAlignment.center,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(dic['payout'], style: TextStyle(fontSize: 12)),
-                    GestureDetector(
-                      child: Container(
-                        padding: EdgeInsets.all(1),
-                        child: Icon(
-                          Icons.card_giftcard,
-                          size: 16,
-                          color: actionButtonColor,
-                        ),
-                      ),
-                      onTap: () {
-                        if (!networkLoading) {
-                          onAction(() => Navigator.of(context)
-                              .pushNamed(PayoutPage.route));
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
         ],
       ),
     );
@@ -817,6 +782,7 @@ class StakingActionsPanel extends StatelessWidget {
     this.bonded,
     this.redeemable,
     this.controller,
+    this.networkLoading,
     this.onAction,
   });
 
@@ -826,6 +792,7 @@ class StakingActionsPanel extends StatelessWidget {
   final BigInt bonded;
   final BigInt redeemable;
   final KeyPairData controller;
+  final bool networkLoading;
   final Function(Future<dynamic> Function()) onAction;
 
   @override
@@ -837,8 +804,6 @@ class StakingActionsPanel extends StatelessWidget {
     Color disabledColor = Theme.of(context).unselectedWidgetColor;
 
     String bondButtonString = dic['action.bondAdjust'];
-    bool setPayeeDisabled = true;
-    Function onSetPayeeTap = () => null;
     bool setControllerDisabled = true;
     Function onSetControllerTap = () => null;
     if (isStash) {
@@ -846,20 +811,8 @@ class StakingActionsPanel extends StatelessWidget {
         setControllerDisabled = false;
         onSetControllerTap = () => onAction(() => Navigator.of(context)
             .pushNamed(SetControllerPage.route, arguments: controller));
-
-        if (stashInfo.isOwnController) {
-          setPayeeDisabled = false;
-          onSetPayeeTap = () => onAction(
-              () => Navigator.of(context).pushNamed(SetPayeePage.route));
-        }
       } else {
         bondButtonString = dic['action.bond'];
-      }
-    } else {
-      if (bonded > BigInt.zero) {
-        setPayeeDisabled = false;
-        onSetPayeeTap = () =>
-            onAction(() => Navigator.of(context).pushNamed(SetPayeePage.route));
       }
     }
 
@@ -966,31 +919,31 @@ class StakingActionsPanel extends StatelessWidget {
             ),
           ),
         ),
-        // Cancel change the reward method cause xxnetwork don't support methods except default staked
-        // Expanded(
-        //   child: Container(
-        //     width: actionButtonWidth,
-        //     child: GestureDetector(
-        //       child: Column(
-        //         children: <Widget>[
-        //           OutlinedCircle(
-        //             icon: Icons.arrow_downward,
-        //             color: setPayeeDisabled ? disabledColor : actionButtonColor,
-        //           ),
-        //           Text(
-        //             dic['action.reward'],
-        //             style: TextStyle(
-        //                 color: setPayeeDisabled
-        //                     ? disabledColor
-        //                     : actionButtonColor,
-        //                 fontSize: 11),
-        //           )
-        //         ],
-        //       ),
-        //       onTap: onSetPayeeTap,
-        //     ),
-        //   ),
-        // ),
+        Expanded(
+          child: Container(
+            width: actionButtonWidth,
+            child: GestureDetector(
+              child: Column(
+                children: <Widget>[
+                  OutlinedCircle(
+                    icon: Icons.arrow_downward,
+                    color: actionButtonColor,
+                  ),
+                  Text(
+                    dic['payout'],
+                    style: TextStyle(color: actionButtonColor, fontSize: 11),
+                  )
+                ],
+              ),
+              onTap: () {
+                if (!networkLoading) {
+                  onAction(
+                      () => Navigator.of(context).pushNamed(PayoutPage.route));
+                }
+              },
+            ),
+          ),
+        ),
         Expanded(
           child: Container(
             width: actionButtonWidth,
