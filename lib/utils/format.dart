@@ -67,7 +67,7 @@ class PluginFmt {
               .toLowerCase()
               .contains(value) ||
           i.accountId.toLowerCase().contains(value) ||
-          i.cmixRoot.toLowerCase().contains(value);
+          i.cmixId.toString().toLowerCase().contains(value);
     });
     return ls;
   }

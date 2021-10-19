@@ -84,12 +84,13 @@ class ValidatorDetailPage extends StatelessWidget {
                                 address: detail.accountId,
                                 icon: accIcon,
                                 cmixRoot: detail.cmixRoot,
-                                cmixStr: detail.cmixRoot != ''
-                                    ? detail.cmixRoot.substring(0, 8) +
+                                cmixId: detail.cmixId,
+                                cmixStr: detail.cmixId != ''
+                                    ? detail.cmixId.substring(0, 8) +
                                         '...' +
-                                        detail.cmixRoot.substring(
-                                            detail.cmixRoot.length - 8,
-                                            detail.cmixRoot.length)
+                                        detail.cmixId.substring(
+                                            detail.cmixId.length - 8,
+                                            detail.cmixId.length)
                                     : '',
                               ),
                               GestureDetector(

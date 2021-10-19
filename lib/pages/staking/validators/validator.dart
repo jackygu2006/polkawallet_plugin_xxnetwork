@@ -67,7 +67,7 @@ class Validator extends StatelessWidget {
                   ),
                   cmixRoot != ''
                       ? Text(
-                          '${dic['cmix_root']}: ${cmixRoot.substring(0, 8) + '...' + cmixRoot.substring(cmixRoot.length - 8, cmixRoot.length)}',
+                          '${dic['cmix_root']}: ${validator.cmixId.substring(0, 8) + '...' + validator.cmixId.substring(validator.cmixId.length - 8, validator.cmixId.length)}',
                           style: TextStyle(
                             color: Theme.of(context).unselectedWidgetColor,
                             fontSize: 12,

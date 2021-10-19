@@ -20,8 +20,9 @@ class ValidatorData extends _ValidatorData {
 
       data.commission = double.parse(json['commissionPer'].toString());
 
-      // set cmix_root
-      data.cmixRoot = json['cmixRoot'];
+      // set cmix_root & cmixId $$$$$$
+      data.cmixRoot = json['cmixRoot'].toString();
+      data.cmixId = json['cmixId'].toString();
 
       data.nominators =
           List<Map<String, dynamic>>.from(json['exposure']['others']);
@@ -50,6 +51,7 @@ abstract class _ValidatorData {
 
   double commission = 0;
   String cmixRoot = '';
+  String cmixId = '';
 
   List<Map<String, dynamic>> nominators = [];
 }
