@@ -66,7 +66,8 @@ class PluginFmt {
               .accountDisplayNameString(i.accountId, accInfo)
               .toLowerCase()
               .contains(value) ||
-          i.accountId.toLowerCase().contains(value);
+          i.accountId.toLowerCase().contains(value) ||
+          i.cmixRoot.toLowerCase().contains(value);
     });
     return ls;
   }

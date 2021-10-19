@@ -28,6 +28,7 @@ const Map<String, String> enStaking = {
       'Tips: The balance of the destination account should not be 0, otherwise you may lose your reward due to existential deposit not met.',
   'staked': 'Staked',
   'commission': 'Commission',
+  'cmix_root': 'Cmix id',
   'reward': 'Return',
   'judgements': 'Judgements',
   'blocking': 'Blocks nominations',
@@ -86,7 +87,7 @@ const Map<String, String> enStaking = {
   'controller.stashOf': 'Unavailable, stash account of ',
   'controller.controllerOf': 'Unavailable, controller account of ',
   'controller.warn': 'Controller account is not changed',
-  'filter': 'Filter with Address/Name',
+  'filter': 'Filter with Address/Name/CmixID',
   'sort': 'Sort by',
   'nominate.active': 'Active',
   'nominate.over': 'Oversubscribed',
@@ -95,4 +96,6 @@ const Map<String, String> enStaking = {
   'nominate.max': 'Max nomination number is 16.',
   'phala': 'Phala Airdrop',
   'recommend': 'Recommended',
+  'subscan': 'Blockchain Explorer',
+  'cmixscan': 'Cmix Explorer',
 };

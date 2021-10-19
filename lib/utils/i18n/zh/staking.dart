@@ -26,6 +26,7 @@ const Map<String, String> zhStaking = {
   'stake.payee.warn': '提示: 目标地址余额不能为空，否则您可能会因为不满足存活余额而丢失收益。',
   'staked': '总质押',
   'commission': '佣金',
+  'cmix_root': '节点ID',
   'reward': '收益',
   'judgements': '评价',
   'blocking': '不可提名',
@@ -79,7 +80,7 @@ const Map<String, String> zhStaking = {
   'controller.warn': '控制账户未修改',
   'controller.stashOf': '不可用，已关联控制账户：',
   'controller.controllerOf': '不可用，已关联储值账户：',
-  'filter': '地址/名称筛选',
+  'filter': '地址/名称/CmixID 筛选',
   'sort': '排序',
   'nominate.active': '活跃',
   'nominate.over': '超额认购',
@@ -88,4 +89,6 @@ const Map<String, String> zhStaking = {
   'nominate.max': '提名数量最多 16 个',
   'phala': 'Phala 空投',
   'recommend': '推荐节点',
+  'subscan': '区块链浏览器',
+  'cmixscan': 'Cmix节点浏览器'
 };

@@ -28,6 +28,7 @@ class Validator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
+    final cmix_root = validator.cmixRoot;
     return GestureDetector(
       child: Container(
         color: Colors.white,
@@ -57,6 +58,13 @@ class Validator extends StatelessWidget {
                   ),
                   Text(
                     '${dic['commission']}: ${NumberFormat('0.00%').format(validator.commission / 100)}',
+                    style: TextStyle(
+                      color: Theme.of(context).unselectedWidgetColor,
+                      fontSize: 12,
+                    ),
+                  ),
+                  Text(
+                    '${dic['cmix_root']}: ${cmix_root.substring(0, 8) + '...' + cmix_root.substring(cmix_root.length - 8, cmix_root.length)}',
                     style: TextStyle(
                       color: Theme.of(context).unselectedWidgetColor,
                       fontSize: 12,

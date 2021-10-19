@@ -12,6 +12,7 @@ import 'package:polkawallet_ui/components/accountInfo.dart';
 import 'package:polkawallet_ui/components/addressIcon.dart';
 import 'package:polkawallet_ui/components/borderedTitle.dart';
 import 'package:polkawallet_ui/components/infoItem.dart';
+import 'package:polkawallet_ui/components/jumpToBrowserLink.dart';
 import 'package:polkawallet_ui/components/roundedCard.dart';
 import 'package:polkawallet_ui/utils/format.dart';
 import 'package:polkawallet_ui/utils/index.dart';
@@ -78,25 +79,27 @@ class ValidatorDetailPage extends StatelessWidget {
                             alignment: AlignmentDirectional.topEnd,
                             children: [
                               AccountInfo(
-                                network: plugin.basic.name,
-                                accInfo: accInfo,
-                                address: detail.accountId,
-                                icon: accIcon,
-                              ),
+                                  network: plugin.basic.name,
+                                  accInfo: accInfo,
+                                  address: detail.accountId,
+                                  icon: accIcon,
+                                  cmixRoot: detail.cmixRoot,
+                                  cmixStr: detail.cmixRoot.substring(0, 8) +
+                                      '...' +
+                                      detail.cmixRoot.substring(
+                                          detail.cmixRoot.length - 8,
+                                          detail.cmixRoot.length)),
                               GestureDetector(
                                 child: Container(
                                   margin: EdgeInsets.only(top: 24, right: 24),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Icon(
-                                        Icons.insert_chart_outlined,
-                                        color: primaryColor,
+                                      JumpToBrowserLink(
+                                        // ######
+                                        'https://subscan.xxnetwork.asia/account/${detail.accountId}',
+                                        text: dicStaking['subscan'],
                                       ),
-                                      Text(
-                                        dicStaking['validator.chart'],
-                                        style: TextStyle(color: primaryColor),
-                                      )
                                     ],
                                   ),
                                 ),
