@@ -96,6 +96,6 @@ const Map<String, String> enStaking = {
   'nominate.max': 'Max nomination number is 16.',
   'phala': 'Phala Airdrop',
   'recommend': 'Recommended',
-  'subscan': 'Blockchain Explorer',
+  'subscan': 'Chain Explorer',
   'cmixscan': 'Cmix Explorer',
 };

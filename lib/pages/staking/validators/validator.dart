@@ -28,7 +28,9 @@ class Validator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_protonet, 'staking');
-    final cmix_root = validator.cmixRoot;
+    final cmixRoot = validator.cmixRoot != null && validator.cmixRoot != ''
+        ? validator.cmixRoot
+        : '';
     return GestureDetector(
       child: Container(
         color: Colors.white,
@@ -63,13 +65,15 @@ class Validator extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  Text(
-                    '${dic['cmix_root']}: ${cmix_root.substring(0, 8) + '...' + cmix_root.substring(cmix_root.length - 8, cmix_root.length)}',
-                    style: TextStyle(
-                      color: Theme.of(context).unselectedWidgetColor,
-                      fontSize: 12,
-                    ),
-                  )
+                  cmixRoot != ''
+                      ? Text(
+                          '${dic['cmix_root']}: ${cmixRoot.substring(0, 8) + '...' + cmixRoot.substring(cmixRoot.length - 8, cmixRoot.length)}',
+                          style: TextStyle(
+                            color: Theme.of(context).unselectedWidgetColor,
+                            fontSize: 12,
+                          ),
+                        )
+                      : '',
                 ],
               ),
             ),

@@ -79,16 +79,19 @@ class ValidatorDetailPage extends StatelessWidget {
                             alignment: AlignmentDirectional.topEnd,
                             children: [
                               AccountInfo(
-                                  network: plugin.basic.name,
-                                  accInfo: accInfo,
-                                  address: detail.accountId,
-                                  icon: accIcon,
-                                  cmixRoot: detail.cmixRoot,
-                                  cmixStr: detail.cmixRoot.substring(0, 8) +
-                                      '...' +
-                                      detail.cmixRoot.substring(
-                                          detail.cmixRoot.length - 8,
-                                          detail.cmixRoot.length)),
+                                network: plugin.basic.name,
+                                accInfo: accInfo,
+                                address: detail.accountId,
+                                icon: accIcon,
+                                cmixRoot: detail.cmixRoot,
+                                cmixStr: detail.cmixRoot != ''
+                                    ? detail.cmixRoot.substring(0, 8) +
+                                        '...' +
+                                        detail.cmixRoot.substring(
+                                            detail.cmixRoot.length - 8,
+                                            detail.cmixRoot.length)
+                                    : '',
+                              ),
                               GestureDetector(
                                 child: Container(
                                   margin: EdgeInsets.only(top: 24, right: 24),
