@@ -15,7 +15,7 @@ class ApiStaking {
   final PluginStore store;
 
   Future<List> fetchAccountRewardsEraOptions() async {
-    final List res = await api.staking.getAccountRewardsEraOptions(); // ######
+    final List res = await api.staking.getAccountRewardsEraOptions();
     return res;
   }
 

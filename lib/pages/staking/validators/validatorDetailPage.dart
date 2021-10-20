@@ -100,7 +100,6 @@ class ValidatorDetailPage extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       JumpToBrowserLink(
-                                        // ######
                                         'https://subscan.xxnetwork.asia/account/${detail.accountId}',
                                         text: dicStaking['subscan'],
                                       ),

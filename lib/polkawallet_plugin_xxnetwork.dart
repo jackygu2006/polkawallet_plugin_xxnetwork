@@ -71,11 +71,11 @@ class PluginXxnetwork extends PolkawalletPlugin {
               'packages/polkawallet_plugin_xxnetwork/assets/images/public/$name.png'),
           iconDisabled: Image.asset(
               'packages/polkawallet_plugin_xxnetwork/assets/images/public/${name}_gray.png'),
-          jsCodeVersion: 22501,
+          jsCodeVersion: 110,
           isTestNet: false,
           isXCMSupport: name == network_name_protonet,
         ),
-        recoveryEnabled = false, //name == network_name_protonet,
+        recoveryEnabled = name == network_name_protonet,
         _cache = name == network_name_protonet
             ? StoreCacheProtonet()
             : StoreCacheXxnetwork();
