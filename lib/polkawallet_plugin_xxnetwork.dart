@@ -75,7 +75,7 @@ class PluginXxnetwork extends PolkawalletPlugin {
           isTestNet: false,
           isXCMSupport: name == network_name_protonet,
         ),
-        recoveryEnabled = name == network_name_protonet,
+        recoveryEnabled = false, // Social Recovery disable
         _cache = name == network_name_protonet
             ? StoreCacheProtonet()
             : StoreCacheXxnetwork();
