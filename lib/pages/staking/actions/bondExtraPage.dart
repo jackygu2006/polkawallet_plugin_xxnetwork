@@ -70,7 +70,7 @@ class _BondExtraPageState extends State<BondExtraPage> {
                             available,
                             decimals,
                             lengthMax: 4,
-                          )} $symbol)',
+                          )} ${symbol.toUpperCase()})',
                         ),
                         inputFormatters: [UI.decimalInputFormatter(decimals)],
                         controller: _amountCtrl,
@@ -101,7 +101,9 @@ class _BondExtraPageState extends State<BondExtraPage> {
                         txTitle: dicStaking['action.bondExtra'],
                         module: 'staking',
                         call: 'bondExtra',
-                        txDisplay: {"amount": '$inputAmount $symbol'},
+                        txDisplay: {
+                          "amount": '$inputAmount ${symbol.toUpperCase()}'
+                        },
                         params: [
                           // "amount"
                           Fmt.tokenInt(inputAmount, decimals).toString(),

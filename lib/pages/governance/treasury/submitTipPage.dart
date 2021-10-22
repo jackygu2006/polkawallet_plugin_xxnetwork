@@ -152,7 +152,7 @@ class _SubmitTipPageState extends State<SubmitTipPage> {
                                       decoration: InputDecoration(
                                         hintText: dicCommon['amount'],
                                         labelText:
-                                            '${dicCommon['amount']} ($symbol)',
+                                            '${dicCommon['amount']} (${symbol.toUpperCase()})',
                                       ),
                                       inputFormatters: [
                                         UI.decimalInputFormatter(decimals)

@@ -67,7 +67,7 @@ class ProposalPanel extends StatelessWidget {
                                 '${dic['treasury.bond']}: ${Fmt.balance(
                                   proposal.balance.toString(),
                                   decimals,
-                                )} $symbol',
+                                )} ${symbol.toUpperCase()}',
                                 style: TextStyle(
                                   color:
                                       Theme.of(context).unselectedWidgetColor,

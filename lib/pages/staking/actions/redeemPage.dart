@@ -65,7 +65,7 @@ class _RedeemPageState extends State<RedeemPage> {
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: dic['amount'],
-                        labelText: '${dic['amount']}($symbol)',
+                        labelText: '${dic['amount']}(${symbol.toUpperCase()})',
                       ),
                       initialValue: redeemable,
                       readOnly: true,
@@ -87,7 +87,8 @@ class _RedeemPageState extends State<RedeemPage> {
                                 call: 'withdrawUnbonded',
                                 txDisplay: {
                                   'spanCount': _slashingSpans,
-                                  'amount': '$redeemable $symbol'
+                                  'amount':
+                                      '$redeemable ${symbol.toUpperCase()}'
                                 },
                                 params: [_slashingSpans],
                               );

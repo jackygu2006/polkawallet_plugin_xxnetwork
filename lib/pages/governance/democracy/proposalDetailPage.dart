@@ -185,7 +185,7 @@ class _ProposalDetailPageState extends State<ProposalDetailPage> {
                                 ),
                               ),
                               Text(
-                                '${Fmt.balance(proposal.balance.toString(), decimals)} $symbol',
+                                '${Fmt.balance(proposal.balance.toString(), decimals)} ${symbol.toUpperCase()}',
                                 style: Theme.of(context).textTheme.headline4,
                               )
                             ],

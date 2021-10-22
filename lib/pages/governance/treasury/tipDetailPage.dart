@@ -284,7 +284,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
                                     '${Fmt.balance(
                                       tipData.deposit.toString(),
                                       decimals,
-                                    )} $symbol',
+                                    )} ${symbol.toUpperCase()}',
                                     style:
                                         Theme.of(context).textTheme.headline4,
                                   ),
@@ -428,7 +428,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
                               padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
                               child: BorderedTitle(
                                   title:
-                                      '${tipData.tips.length} ${dic['treasury.tipper']} (${Fmt.token(median, decimals)} $symbol)'),
+                                      '${tipData.tips.length} ${dic['treasury.tipper']} (${Fmt.token(median, decimals)} ${symbol.toUpperCase()})'),
                             ),
                             Column(
                               children: tipData.tips.map((e) {
@@ -444,7 +444,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
                                     '${Fmt.balance(
                                       e.value.toString(),
                                       decimals,
-                                    )} $symbol',
+                                    )} ${symbol.toUpperCase()}',
                                     style:
                                         Theme.of(context).textTheme.headline4,
                                   ),

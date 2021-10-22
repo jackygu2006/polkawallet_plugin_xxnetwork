@@ -126,7 +126,7 @@ class _BondPageState extends State<BondPage> {
                           '${dic['amount']} (${dicStaking['available']}: ${Fmt.priceFloor(
                         available,
                         lengthMax: 4,
-                      )} $symbol)',
+                      )} ${symbol.toUpperCase()})',
                     ),
                     inputFormatters: [UI.decimalInputFormatter(decimals)],
                     controller: _amountCtrl,
@@ -175,7 +175,7 @@ class _BondPageState extends State<BondPage> {
                   module: 'staking',
                   call: 'bond',
                   txDisplay: {
-                    "amount": '$inputAmount $symbol',
+                    "amount": '$inputAmount ${symbol.toUpperCase()}',
                     "reward_destination": _rewardTo == 3
                         ? {'Account': _rewardAccount}
                         : rewardToOptions[_rewardTo],

@@ -173,8 +173,8 @@ class _StakingActions extends State<StakingActions> {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 8, top: 8),
-                child:
-                    Text('Rewards ($symbol)', style: TextStyle(fontSize: 12)),
+                child: Text('Rewards (${symbol.toUpperCase()})',
+                    style: TextStyle(fontSize: 12)),
               ),
               Container(
                 height: MediaQuery.of(context).size.width / 2.4,
@@ -207,7 +207,7 @@ class _StakingActions extends State<StakingActions> {
           subtitle: Text(Fmt.dateTime(
               DateTime.fromMillisecondsSinceEpoch(i.blockTimestamp * 1000))),
           trailing: Text(
-            '${isReward ? '+' : '-'} ${Fmt.balance(i.amount, decimals)} $symbol',
+            '${isReward ? '+' : '-'} ${Fmt.balance(i.amount, decimals)} ${symbol.toUpperCase()}',
             style: TextStyle(color: isReward ? _colorReward : Colors.red),
           ),
           onTap: () {
@@ -919,31 +919,32 @@ class StakingActionsPanel extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: Container(
-            width: actionButtonWidth,
-            child: GestureDetector(
-              child: Column(
-                children: <Widget>[
-                  OutlinedCircle(
-                    icon: Icons.arrow_downward,
-                    color: actionButtonColor,
-                  ),
-                  Text(
-                    dic['payout'],
-                    style: TextStyle(color: actionButtonColor, fontSize: 11),
-                  )
-                ],
-              ),
-              onTap: () {
-                if (!networkLoading) {
-                  onAction(
-                      () => Navigator.of(context).pushNamed(PayoutPage.route));
-                }
-              },
-            ),
-          ),
-        ),
+        // Disable payout function, cause the xxnetwork only support staked mode which means all rewards will be re-staked automaticly
+        // Expanded(
+        //   child: Container(
+        //     width: actionButtonWidth,
+        //     child: GestureDetector(
+        //       child: Column(
+        //         children: <Widget>[
+        //           OutlinedCircle(
+        //             icon: Icons.arrow_downward,
+        //             color: actionButtonColor,
+        //           ),
+        //           Text(
+        //             dic['payout'],
+        //             style: TextStyle(color: actionButtonColor, fontSize: 11),
+        //           )
+        //         ],
+        //       ),
+        //       onTap: () {
+        //         if (!networkLoading) {
+        //           onAction(
+        //               () => Navigator.of(context).pushNamed(PayoutPage.route));
+        //         }
+        //       },
+        //     ),
+        //   ),
+        // ),
         Expanded(
           child: Container(
             width: actionButtonWidth,

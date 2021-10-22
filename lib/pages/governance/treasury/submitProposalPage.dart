@@ -117,7 +117,8 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                               TextFormField(
                                 decoration: InputDecoration(
                                   hintText: dicCommon['amount'],
-                                  labelText: '${dicCommon['amount']} ($symbol)',
+                                  labelText:
+                                      '${dicCommon['amount']} (${symbol.toUpperCase()})',
                                 ),
                                 inputFormatters: [
                                   UI.decimalInputFormatter(decimals)
@@ -135,7 +136,7 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                               TextFormField(
                                 decoration: InputDecoration(
                                   labelText:
-                                      '${dic['treasury.bond']} ($symbol)',
+                                      '${dic['treasury.bond']} (${symbol.toUpperCase()})',
                                 ),
                                 initialValue: '$bondPercentage%',
                                 readOnly: true,
@@ -155,7 +156,7 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                               TextFormField(
                                 decoration: InputDecoration(
                                   labelText:
-                                      '${dic['treasury.bond.min']} ($symbol)',
+                                      '${dic['treasury.bond.min']} (${symbol.toUpperCase()})',
                                 ),
                                 initialValue: Fmt.priceCeilBigInt(
                                   minBond,

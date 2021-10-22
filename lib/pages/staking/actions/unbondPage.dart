@@ -85,7 +85,7 @@ class _UnBondPageState extends State<UnBondPage> {
                               '${dic['amount']} (${dicStaking['bonded']}: ${Fmt.priceFloor(
                             bonded,
                             lengthMax: 4,
-                          )} $symbol)',
+                          )} ${symbol.toUpperCase()})',
                           errorMaxLines: 3,
                         ),
                         inputFormatters: [UI.decimalInputFormatter(decimals)],
@@ -122,7 +122,9 @@ class _UnBondPageState extends State<UnBondPage> {
                         txTitle: dicStaking['action.unbond'],
                         module: 'staking',
                         call: 'unbond',
-                        txDisplay: {"amount": '$inputAmount $symbol'},
+                        txDisplay: {
+                          "amount": '$inputAmount ${symbol.toUpperCase()}'
+                        },
                         params: [
                           // "amount"
                           Fmt.tokenInt(inputAmount, decimals).toString(),

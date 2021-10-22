@@ -35,7 +35,7 @@ class StakingDetailPage extends StatelessWidget {
             value = Fmt.address(value);
             break;
           case "Compact<BalanceOf>":
-            value = '${Fmt.balance(value, decimals)} $symbol';
+            value = '${Fmt.balance(value, decimals)} ${symbol.toUpperCase()}';
             break;
           case "AccountId":
             value = value.contains('0x') ? value : '0x$value';
@@ -76,7 +76,7 @@ class StakingDetailPage extends StatelessWidget {
       networkName: plugin.basic.name,
       success: detail.success,
       action: detail.call,
-      fee: '${Fmt.balance(detail.fee, decimals)} $symbol',
+      fee: '${Fmt.balance(detail.fee, decimals)} ${symbol.toUpperCase()}',
       hash: detail.hash,
       eventId: detail.txNumber,
       infoItems: info,

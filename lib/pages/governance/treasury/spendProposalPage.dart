@@ -206,7 +206,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
                           content: '${Fmt.balance(
                             proposal.proposal.value.toString(),
                             decimals,
-                          )} $symbol',
+                          )} ${symbol.toUpperCase()}',
                           crossAxisAlignment: CrossAxisAlignment.center,
                         ),
                         InfoItem(
@@ -214,7 +214,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
                           content: '${Fmt.balance(
                             proposal.proposal.bond.toString(),
                             decimals,
-                          )} $symbol',
+                          )} ${symbol.toUpperCase()}',
                           crossAxisAlignment: CrossAxisAlignment.center,
                         ),
                       ],

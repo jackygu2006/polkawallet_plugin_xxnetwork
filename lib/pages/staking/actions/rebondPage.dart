@@ -69,7 +69,7 @@ class _RebondPageState extends State<RebondPage> {
                               '${dic['amount']} (${dicStaking['available']}: ${Fmt.priceFloor(
                             available,
                             lengthMax: 4,
-                          )} $symbol)',
+                          )} ${symbol.toUpperCase()})',
                         ),
                         inputFormatters: [UI.decimalInputFormatter(decimals)],
                         controller: _amountCtrl,
@@ -99,7 +99,9 @@ class _RebondPageState extends State<RebondPage> {
                         txTitle: dicStaking['action.rebond'],
                         module: 'staking',
                         call: 'rebond',
-                        txDisplay: {"amount": '$inputAmount $symbol'},
+                        txDisplay: {
+                          "amount": '$inputAmount ${symbol.toUpperCase()}'
+                        },
                         params: [
                           // "amount"
                           Fmt.tokenInt(inputAmount, decimals).toString(),

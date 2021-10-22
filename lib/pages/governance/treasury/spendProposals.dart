@@ -235,7 +235,7 @@ class _OverviewCard extends StatelessWidget {
             children: <Widget>[
               InfoItem(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                title: '${dic['treasury.available']} ($symbol)',
+                title: '${dic['treasury.available']} (${symbol.toUpperCase()})',
                 content: balance,
               ),
               InfoItem(
@@ -314,7 +314,7 @@ class _ProposalItem extends StatelessWidget {
       leading: AddressIcon(proposal.proposal.proposer, svg: icon),
       title: UI.accountDisplayName(proposal.proposal.proposer, accInfo),
       subtitle: Text(
-          '${Fmt.balance(proposal.proposal.value.toString(), decimals)} $symbol'),
+          '${Fmt.balance(proposal.proposal.value.toString(), decimals)} ${symbol.toUpperCase()}'),
       trailing: Text(
         '# ${int.parse(proposal.id)}',
         style: Theme.of(context).textTheme.headline4,

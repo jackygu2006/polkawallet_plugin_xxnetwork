@@ -81,7 +81,7 @@ class _CandidateDetailPageState extends State<CandidateDetailPage> {
                       Padding(
                         padding: EdgeInsets.only(top: 8, bottom: 8),
                         child: Text(
-                            '${Fmt.token(BigInt.parse(info[1].toString()), decimals)} $symbol',
+                            '${Fmt.token(BigInt.parse(info[1].toString()), decimals)} ${symbol.toUpperCase()}',
                             style: style),
                       ),
                       Text(dic['backing'])

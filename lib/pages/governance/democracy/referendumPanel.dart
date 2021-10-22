@@ -192,8 +192,8 @@ class ReferendumPanel extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text('${Fmt.token(votedNay, decimals)} $symbol'),
-          Text('${Fmt.token(votedAye, decimals)} $symbol')
+          Text('${Fmt.token(votedNay, decimals)} ${symbol.toUpperCase()}'),
+          Text('${Fmt.token(votedAye, decimals)} ${symbol.toUpperCase()}')
         ],
       ),
       Row(
@@ -212,7 +212,7 @@ class ReferendumPanel extends StatelessWidget {
                     : dic['vote.change.down'],
               ),
               Text(
-                '${Fmt.balance(data.changeNay, decimals)} $symbol',
+                '${Fmt.balance(data.changeNay, decimals)} ${symbol.toUpperCase()}',
                 style: TextStyle(
                     color: Theme.of(context).unselectedWidgetColor,
                     fontSize: 13),
@@ -232,7 +232,7 @@ class ReferendumPanel extends StatelessWidget {
                     : dic['vote.change.down'],
               ),
               Text(
-                '${Fmt.balance(data.changeAye, decimals)} $symbol',
+                '${Fmt.balance(data.changeAye, decimals)} ${symbol.toUpperCase()}',
                 style: TextStyle(
                     color: Theme.of(context).unselectedWidgetColor,
                     fontSize: 13),
@@ -259,7 +259,7 @@ class ReferendumPanel extends StatelessWidget {
             children: [
               InfoItem(
                 title: '${dic['vote.my']} - $conviction ${dic[yes]}',
-                content: '$amount $symbol',
+                content: '$amount ${symbol.toUpperCase()}',
               ),
               OutlinedButtonSmall(
                 content: dic['vote.remove'],
