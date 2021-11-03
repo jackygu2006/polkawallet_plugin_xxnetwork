@@ -46,23 +46,23 @@ class ApiStaking {
         network: plugin.basic.name,
       ),
       // ###### utility.batchAll 抓取链上数据有问题
-      api.subScan.fetchTxsAsync(
-        'utility',
-        call: 'batchAll',
-        page: page,
-        sender: keyring.current.address,
-        network: plugin.basic.name,
-      ),
+      // api.subScan.fetchTxsAsync(
+      //   'utility',
+      //   call: 'batchAll',
+      //   page: page,
+      //   sender: keyring.current.address,
+      //   network: plugin.basic.name,
+      // ),
     ]);
 
     final list = res[0];
-    if (res[1] != null && res[1]['extrinsics'] != null) {
-      final batchTxs = List.of(res[1]['extrinsics']);
-      batchTxs.retainWhere((e) => (e['params'] as String).contains('Staking'));
-      final allTxs = [...res[0]['extrinsics'], ...batchTxs];
-      allTxs.sort((a, b) => a['block_num'] < b['block_num'] ? 1 : -1);
-      res[0]['extrinsics'] = allTxs;
-    }
+    // if (res[1] != null && res[1]['extrinsics'] != null) {
+    //   final batchTxs = List.of(res[1]['extrinsics']);
+    //   batchTxs.retainWhere((e) => (e['params'] as String).contains('Staking'));
+    //   final allTxs = [...res[0]['extrinsics'], ...batchTxs];
+    //   allTxs.sort((a, b) => a['block_num'] < b['block_num'] ? 1 : -1);
+    //   res[0]['extrinsics'] = allTxs;
+    // }
     await store.staking.addTxs(
       list,
       keyring.current.pubKey,
