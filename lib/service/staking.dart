@@ -27,7 +27,7 @@ class ApiStaking {
       List unlocking = store.staking.ownStashInfo.stakingLedger['unlocking'];
       if (bonded > 0 || unlocking.length > 0) {
         String address = store.staking.ownStashInfo.stashId;
-        print('fetching staking rewards...'); // ######
+        print('fetching staking rewards...');
         Map res = await api.staking.queryAccountRewards(address, eras);
         return res;
       }
@@ -45,6 +45,7 @@ class ApiStaking {
         sender: keyring.current.address,
         network: plugin.basic.name,
       ),
+      // ###### utility.batchAll 抓取链上数据有问题
       api.subScan.fetchTxsAsync(
         'utility',
         call: 'batchAll',
@@ -53,6 +54,7 @@ class ApiStaking {
         network: plugin.basic.name,
       ),
     ]);
+
     final list = res[0];
     if (res[1] != null && res[1]['extrinsics'] != null) {
       final batchTxs = List.of(res[1]['extrinsics']);
@@ -89,7 +91,7 @@ class ApiStaking {
   // this query takes a long time
   Future<void> queryElectedInfo() async {
     // fetch all validators details
-    final res = await api.staking.queryElectedInfo(); // ######
+    final res = await api.staking.queryElectedInfo();
     store.staking.setValidatorsInfo(res);
 
     queryNominations();
@@ -101,12 +103,12 @@ class ApiStaking {
 
   Future<void> queryNominations() async {
     // fetch nominators for all validators
-    final res = await api.staking.queryNominations(); // ######
+    final res = await api.staking.queryNominations();
     store.staking.setNominations(res);
   }
 
   Future<Map> queryValidatorRewards(String accountId) async {
-    print('fetching rewards chart data'); // ######
+    print('fetching rewards chart data');
     Map data = await api.staking.loadValidatorRewardsData(accountId);
     if (data != null) {
       // format rewards data & set cache
@@ -147,7 +149,7 @@ class ApiStaking {
   }
 
   Future<void> queryAccountBondedInfo() async {
-    final data = await api.staking // ######
+    final data = await api.staking
         .queryBonded(keyring.allAccounts.map((e) => e.pubKey).toList());
     store.staking.setAccountBondedMap(data);
   }

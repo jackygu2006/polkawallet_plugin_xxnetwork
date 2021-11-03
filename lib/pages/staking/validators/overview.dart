@@ -555,7 +555,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                   )
                 : Container(),
           ));
-          // add validators ######
+          // add validators
           List<ValidatorData> ls = _tab == 0
               ? widget.plugin.store.staking.electedInfo.toList()
               : widget.plugin.store.staking.nextUpsInfo.toList();
