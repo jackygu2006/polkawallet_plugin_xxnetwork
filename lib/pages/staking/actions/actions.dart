@@ -129,7 +129,7 @@ class _StakingActions extends State<StakingActions> {
                 : SvgPicture.asset(
                     'packages/polkawallet_plugin_xxnetwork/assets/images/staking/error.svg'),
           ),
-          title: Text(i.call),
+          title: Text(dic[i.call]),
           subtitle: Text(Fmt.dateTime(
               DateTime.fromMillisecondsSinceEpoch(i.blockTimestamp * 1000))),
           trailing: i.success
