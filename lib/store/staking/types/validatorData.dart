@@ -26,6 +26,8 @@ class ValidatorData extends _ValidatorData {
 
       data.nominators =
           List<Map<String, dynamic>>.from(json['exposure']['others']);
+
+      // $$$$$$ 增加point
     }
     return data;
   }

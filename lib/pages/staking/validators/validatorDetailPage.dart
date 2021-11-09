@@ -32,6 +32,7 @@ class ValidatorDetailPage extends StatelessWidget {
           final int decimals = plugin.networkState.tokenDecimals[0];
           final ValidatorData detail =
               ModalRoute.of(context).settings.arguments;
+          print('====== validator: ' + detail.cmixId);
 
           final accInfo =
               plugin.store.accounts.addressIndexMap[detail.accountId];
@@ -84,7 +85,9 @@ class ValidatorDetailPage extends StatelessWidget {
                                 address: detail.accountId,
                                 icon: accIcon,
                                 cmixRoot: detail.cmixRoot,
-                                cmixId: detail.cmixId,
+                                cmixId: detail.cmixId
+                                    .replaceAll('/', '_')
+                                    .replaceAll('+', '-'),
                                 cmixStr: detail.cmixId != ''
                                     ? detail.cmixId.substring(0, 8) +
                                         '...' +
