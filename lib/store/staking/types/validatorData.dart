@@ -1,6 +1,7 @@
 class ValidatorData extends _ValidatorData {
   static ValidatorData fromJson(Map<String, dynamic> json) {
     ValidatorData data = ValidatorData();
+
     data.accountId = json['accountId'];
     if (json['exposure'] != null) {
       data.total = BigInt.parse(json['exposure']['total'].toString());
@@ -27,7 +28,8 @@ class ValidatorData extends _ValidatorData {
       data.nominators =
           List<Map<String, dynamic>>.from(json['exposure']['others']);
 
-      // $$$$$$ 增加point
+      data.points = json['points'];
+      data.currentPoints = json['currentPoints'];
     }
     return data;
   }
@@ -54,6 +56,8 @@ abstract class _ValidatorData {
   double commission = 0;
   String cmixRoot = '';
   String cmixId = '';
+  int points = 0;
+  int currentPoints = 0;
 
   List<Map<String, dynamic>> nominators = [];
 }

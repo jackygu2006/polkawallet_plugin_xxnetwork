@@ -32,7 +32,6 @@ class ValidatorDetailPage extends StatelessWidget {
           final int decimals = plugin.networkState.tokenDecimals[0];
           final ValidatorData detail =
               ModalRoute.of(context).settings.arguments;
-          print('====== validator: ' + detail.cmixId);
 
           final accInfo =
               plugin.store.accounts.addressIndexMap[detail.accountId];
@@ -95,6 +94,8 @@ class ValidatorDetailPage extends StatelessWidget {
                                             detail.cmixId.length - 8,
                                             detail.cmixId.length)
                                     : '',
+                                points: detail.points.toInt(),
+                                currentPoints: detail.currentPoints.toInt(),
                               ),
                               GestureDetector(
                                 child: Container(

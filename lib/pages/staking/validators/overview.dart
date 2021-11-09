@@ -248,6 +248,23 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
               ],
             ),
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 16, 0, 8),
+            child: Row(
+              children: [
+                InfoItem(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  title: dicStaking['current.era'],
+                  content: overview['currentEra'].toString(),
+                ),
+                InfoItem(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  title: dicStaking['everage.points'],
+                  content: overview['avgPoints'].toString(),
+                ),
+              ],
+            ),
+          ),
           Divider(),
           ListTile(
             leading: Container(

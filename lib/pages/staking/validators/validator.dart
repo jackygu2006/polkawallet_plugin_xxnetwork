@@ -31,6 +31,12 @@ class Validator extends StatelessWidget {
     final cmixRoot = validator.cmixRoot != null && validator.cmixRoot != ''
         ? validator.cmixRoot
         : '';
+    final points =
+        validator.points != null && validator.points > 0 ? validator.points : 0;
+    var currentPoints =
+        validator.currentPoints != null && validator.currentPoints > 0
+            ? validator.currentPoints
+            : 0;
     return GestureDetector(
       child: Container(
         color: Colors.white,
@@ -60,6 +66,13 @@ class Validator extends StatelessWidget {
                   ),
                   Text(
                     '${dic['commission']}: ${NumberFormat('0.00%').format(validator.commission / 100)}',
+                    style: TextStyle(
+                      color: Theme.of(context).unselectedWidgetColor,
+                      fontSize: 12,
+                    ),
+                  ),
+                  Text(
+                    '${dic['points']}: ${dic['current']} ${currentPoints.toString()}, ${dic['last']} ${points.toString()}',
                     style: TextStyle(
                       color: Theme.of(context).unselectedWidgetColor,
                       fontSize: 12,
