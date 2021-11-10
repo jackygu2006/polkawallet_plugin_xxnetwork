@@ -173,40 +173,42 @@ class _PayeeSelectorState extends State<PayeeSelector> {
     return Column(
       children: <Widget>[
         ListTile(
-          title: Text(dic['bond.reward']),
-          subtitle: Text(rewardToOptions[
-              _rewardTo ?? widget.initialValue.destinationId ?? 0]),
-          trailing: Icon(Icons.arrow_forward_ios, size: 18),
-          onTap: () {
-            showCupertinoModalPopup(
-              context: context,
-              builder: (_) => Container(
-                height: MediaQuery.of(context).copyWith().size.height / 3,
-                child: CupertinoPicker(
-                  backgroundColor: Colors.white,
-                  itemExtent: 56,
-                  scrollController: FixedExtentScrollController(
-                      initialItem: widget.initialValue.destinationId ?? 0),
-                  children: rewardToOptions
-                      .map((i) => Padding(
-                            padding: EdgeInsets.all(12),
-                            child: Text(
-                              i,
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ))
-                      .toList(),
-                  onSelectedItemChanged: (v) {
-                    setState(() {
-                      _rewardTo = v;
-                      _rewardAccount = widget.keyring.current;
-                    });
-                    widget.onChange(v, widget.keyring.current.address);
-                  },
-                ),
-              ),
-            );
-          },
+          title: Text(dic['bond.reward'] +
+              ': ' +
+              rewardToOptions[
+                  _rewardTo ?? widget.initialValue.destinationId ?? 0]),
+          // subtitle: Text(rewardToOptions[_rewardTo ?? widget.initialValue.destinationId ?? 0]),
+          // trailing: Icon(Icons.arrow_forward_ios, size: 18),
+          // onTap: () {
+          //   showCupertinoModalPopup(
+          //     context: context,
+          //     builder: (_) => Container(
+          //       height: MediaQuery.of(context).copyWith().size.height / 3,
+          //       child: CupertinoPicker(
+          //         backgroundColor: Colors.white,
+          //         itemExtent: 56,
+          //         scrollController: FixedExtentScrollController(
+          //             initialItem: widget.initialValue.destinationId ?? 0),
+          //         children: rewardToOptions
+          //             .map((i) => Padding(
+          //                   padding: EdgeInsets.all(12),
+          //                   child: Text(
+          //                     i,
+          //                     style: TextStyle(fontSize: 14),
+          //                   ),
+          //                 ))
+          //             .toList(),
+          //         onSelectedItemChanged: (v) {
+          //           setState(() {
+          //             _rewardTo = v;
+          //             _rewardAccount = widget.keyring.current;
+          //           });
+          //           widget.onChange(v, widget.keyring.current.address);
+          //         },
+          //       ),
+          //     ),
+          //   );
+          // },
         ),
         (_rewardTo ?? widget.initialValue.destinationId) == 3
             ? Padding(
