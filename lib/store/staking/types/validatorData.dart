@@ -21,7 +21,7 @@ class ValidatorData extends _ValidatorData {
 
       data.commission = double.parse(json['commissionPer'].toString());
 
-      // set cmix_root & cmixId $$$$$$
+      // set cmix_root & cmixId
       data.cmixRoot = json['cmixRoot'].toString();
       data.cmixId = json['cmixId'].toString();
 
