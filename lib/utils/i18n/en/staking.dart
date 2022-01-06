@@ -21,7 +21,7 @@ const Map<String, String> enStaking = {
   'stake.other': 'Other',
   'stake.bond.min': 'Min nominator bond',
   'stake.warn':
-      '1: The bonded Tokens will be locked for about 28 days on xxnetwork/protonet after unbonding.\n'
+      '1: The bonded Tokens will be locked for about 28 days on xxnetwork after unbonding.\n'
           '2: Your account should always have transferable balance for paying tx fees, so do not bond all your tokens.\n'
           '3: The amount of bonded Tokens needs to meet the minimum requirements(see page: Validators).',
   'stake.payee.warn':

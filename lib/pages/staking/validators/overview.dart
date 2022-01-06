@@ -454,7 +454,6 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _refreshData();
     });

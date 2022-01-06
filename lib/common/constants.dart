@@ -13,8 +13,8 @@ const node_list_protonet = [
 const node_list_xxnetwork = [
   {
     'name': 'xx network(Mainnet)',
-    'ss58': 42,
-    'endpoint': 'wss://polkadot.api.onfinality.io/public-ws',
+    'ss58': 55,
+    'endpoint': 'wss://mainnet.xxnet.io',
   }
 ];
 

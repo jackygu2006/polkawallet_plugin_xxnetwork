@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 
 class WalletApi {
-  static const String _endpoint = 'https://api.polkawallet.io';
+  static const String _endpoint = 'https://www.xxnetwork.asia/app';
 
   static Future<Map> getRecommended() async {
     try {

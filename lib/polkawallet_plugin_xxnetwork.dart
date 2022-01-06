@@ -53,13 +53,13 @@ import 'package:polkawallet_ui/pages/walletExtensionSignPage.dart';
 class PluginXxnetwork extends PolkawalletPlugin {
   /// the xxnetwork plugin support two networks: xxnetwork & protonet,
   /// so we need to identify the active network to connect & display UI.
-  PluginXxnetwork({name = 'protonet'})
+  PluginXxnetwork({name = 'xxnetwork'})
       : basic = PluginBasicData(
           name: name,
           genesisHash: name == network_name_protonet
               ? genesis_hash_protonet
               : genesis_hash_xxnetwork,
-          ss58: 42, //name == network_name_protonet ? 2 : 0,
+          ss58: name == network_name_protonet ? 42 : 55, // ######
           primaryColor:
               name == network_name_protonet ? protonet_teal : Colors.teal,
           gradientColor: name == network_name_protonet
