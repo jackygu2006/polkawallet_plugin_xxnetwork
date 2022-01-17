@@ -31,6 +31,8 @@ const Map<String, String> zhStaking = {
   'current': '本轮',
   'last': '上轮',
   'current.era': '当前ERA',
+  'current.avgStaked': '平均质押量',
+  'current.ttlIssuance': '总可质押量',
   'everage.points': '平均幸运值',
   'reward': '预估收益',
   'judgements': '评价',

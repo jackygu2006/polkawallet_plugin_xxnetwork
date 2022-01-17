@@ -95,6 +95,7 @@ abstract class _StakingStore with Store {
       'stakedReturn': inflation != null ? inflation['stakedReturn'] : 0,
       'totalStaked': data['totalStaked'],
       'totalIssuance': data['totalIssuance'],
+      'avgStaked': data['avgStaked'],
       'minNominated': data['minNominated'],
       'minNominatorBond': data['minNominatorBond'],
       'avgPoints': data['avgPoints'].floor(),

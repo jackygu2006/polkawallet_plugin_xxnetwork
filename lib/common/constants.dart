@@ -12,9 +12,14 @@ const node_list_protonet = [
 ];
 const node_list_xxnetwork = [
   {
-    'name': 'xx network(Mainnet)',
+    'name': 'xx network(Mainnet 1)',
     'ss58': 55,
     'endpoint': 'wss://mainnet.xxnet.io',
+  },
+  {
+    'name': 'xx network(Mainnet 2)',
+    'ss58': 55,
+    'endpoint': 'wss://mainnet.xxlabs.net',
   }
 ];
 

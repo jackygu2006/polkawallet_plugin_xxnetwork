@@ -205,6 +205,16 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
       stakedRatio = totalStaked / Fmt.balanceInt(overview['totalIssuance']);
     }
 
+    BigInt avgStaked = BigInt.zero;
+    if (overview['avgStaked'] != null) {
+      avgStaked = Fmt.balanceInt('0x${overview['avgStaked']}');
+    }
+
+    BigInt totalIssuance = BigInt.zero;
+    if (overview['totalIssuance'] != null) {
+      totalIssuance = Fmt.balanceInt(overview['totalIssuance']);
+    }
+
     Color actionButtonColor = Theme.of(context).primaryColor;
     Color disabledColor = Theme.of(context).disabledColor;
 
@@ -248,6 +258,18 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
               ],
             ),
           ),
+          Padding(
+              padding: EdgeInsets.fromLTRB(0, 16, 0, 8),
+              child: Row(children: [
+                InfoItem(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    title: dicStaking['current.avgStaked'],
+                    content: Fmt.priceFloorBigInt(avgStaked, decimals)),
+                InfoItem(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    title: dicStaking['current.ttlIssuance'],
+                    content: Fmt.priceFloorBigInt(totalIssuance, decimals))
+              ])),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 16, 0, 8),
             child: Row(

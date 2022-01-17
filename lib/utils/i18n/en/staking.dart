@@ -33,6 +33,8 @@ const Map<String, String> enStaking = {
   'current': 'Current',
   'last': 'Last',
   'current.era': 'Era',
+  'current.avgStaked': 'Average Staked',
+  'current.ttlIssuance': 'Total Issuance',
   'everage.points': 'Avg Points',
   'reward': 'Est. APR',
   'judgements': 'Judgements',
