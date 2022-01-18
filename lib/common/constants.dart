@@ -20,6 +20,16 @@ const node_list_xxnetwork = [
     'name': 'xx network(Mainnet 2)',
     'ss58': 55,
     'endpoint': 'wss://mainnet.xxlabs.net',
+  },
+  {
+    'name': 'xx network(Asia Node1)',
+    'ss58': 55,
+    'endpoint': 'wss://node.xxnetwork.asia',
+  },
+  {
+    'name': 'xx network(Asia Node2)',
+    'ss58': 55,
+    'endpoint': 'wss://node1.xxnetwork.asia',
   }
 ];
 
