@@ -1,6 +1,7 @@
 const Map<String, String> zhStaking = {
   'overview': '概览',
   'overview.total': '质押总量',
+  'overview.totalStakable': '总可质押量',
   'overview.reward': '平均收益',
   'overview.min': '最低提名/绑定',
   'actions': '账户操作',
@@ -33,6 +34,7 @@ const Map<String, String> zhStaking = {
   'current.era': '当前ERA',
   'current.avgStaked': '平均质押量',
   'current.ttlIssuance': '总可质押量',
+  'current.nextReward': '下一轮预估奖励',
   'everage.points': '平均幸运值',
   'reward': '预估收益',
   'judgements': '评价',

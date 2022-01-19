@@ -99,6 +99,7 @@ abstract class _StakingStore with Store {
       'minNominated': data['minNominated'],
       'minNominatorBond': data['minNominatorBond'],
       'avgPoints': data['avgPoints'].floor(),
+      'nextEraReward': data['nextEraReward'],
       'currentEra': data['currentEra'],
     };
 

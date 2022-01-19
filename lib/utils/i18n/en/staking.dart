@@ -1,6 +1,7 @@
 const Map<String, String> enStaking = {
   'overview': 'Overview',
   'overview.total': 'Total staked',
+  'overview.totalStakable': 'Total Stakable',
   'overview.reward': 'Returns',
   'overview.min': 'Min nominated/bond',
   'actions': 'Account Actions',
@@ -35,6 +36,7 @@ const Map<String, String> enStaking = {
   'current.era': 'Era',
   'current.avgStaked': 'Average Staked',
   'current.ttlIssuance': 'Total Issuance',
+  'current.nextReward': 'Est. Next Reward',
   'everage.points': 'Avg Points',
   'reward': 'Est. APR',
   'judgements': 'Judgements',

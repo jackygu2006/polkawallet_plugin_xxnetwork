@@ -201,6 +201,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
     double stakedRatio = 0;
     BigInt totalStaked = BigInt.zero;
     if (overview['totalStaked'] != null) {
+      // If sdk return back BN type, use '0x'
       totalStaked = Fmt.balanceInt('0x${overview['totalStaked']}');
       stakedRatio = totalStaked / Fmt.balanceInt(overview['totalIssuance']);
     }
@@ -213,6 +214,11 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
     BigInt totalIssuance = BigInt.zero;
     if (overview['totalIssuance'] != null) {
       totalIssuance = Fmt.balanceInt(overview['totalIssuance']);
+    }
+
+    BigInt nextEraReward = BigInt.zero;
+    if (overview['nextEraReward'] != null) {
+      nextEraReward = Fmt.balanceInt(overview['nextEraReward']);
     }
 
     Color actionButtonColor = Theme.of(context).primaryColor;
@@ -228,11 +234,16 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
             child: Column(
               children: [
                 Text(
-                  '${dicStaking['overview.total']} (${(stakedRatio * 100).toStringAsFixed(1)}%)',
+                  '${dicStaking['overview.total']}/${dicStaking['overview.totalStakable']} (${(stakedRatio * 100).toStringAsFixed(1)}%)',
                   style: TextStyle(fontSize: 12),
                 ),
                 Text(
-                  Fmt.priceFloorBigInt(totalStaked, decimals),
+                  Fmt.priceFloorBigInt(totalStaked, decimals, lengthFixed: 0) +
+                      '/' +
+                      Fmt.priceFloorBigInt(totalIssuance, decimals,
+                          lengthFixed: 0) +
+                      ' ' +
+                      symbol.toUpperCase(),
                   style: Theme.of(context).textTheme.headline4,
                 )
               ],
@@ -249,8 +260,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                 ),
                 InfoItem(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  title:
-                      dicStaking['overview.min'] + '(${symbol.toUpperCase()})',
+                  title: dicStaking['overview.min'],
                   content: Fmt.balance(overview['minNominated'], decimals) +
                       ' / ' +
                       Fmt.balance(overview['minNominatorBond'], decimals),
@@ -264,11 +274,17 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                 InfoItem(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     title: dicStaking['current.avgStaked'],
-                    content: Fmt.priceFloorBigInt(avgStaked, decimals)),
+                    content: Fmt.priceFloorBigInt(avgStaked, decimals,
+                            lengthFixed: 0) +
+                        ' ' +
+                        symbol.toUpperCase()),
                 InfoItem(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    title: dicStaking['current.ttlIssuance'],
-                    content: Fmt.priceFloorBigInt(totalIssuance, decimals))
+                    title: dicStaking['current.nextReward'],
+                    content: Fmt.priceFloorBigInt(nextEraReward, decimals,
+                            lengthFixed: 0) +
+                        ' ' +
+                        symbol.toUpperCase())
               ])),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 16, 0, 8),
