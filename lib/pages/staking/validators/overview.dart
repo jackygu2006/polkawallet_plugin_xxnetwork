@@ -218,7 +218,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
 
     BigInt nextEraReward = BigInt.zero;
     if (overview['nextEraReward'] != null) {
-      nextEraReward = Fmt.balanceInt(overview['nextEraReward']);
+      nextEraReward = Fmt.balanceInt('0x${overview['nextEraReward']}');
     }
 
     Color actionButtonColor = Theme.of(context).primaryColor;
