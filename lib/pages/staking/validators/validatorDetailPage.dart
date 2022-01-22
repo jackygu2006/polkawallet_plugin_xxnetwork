@@ -94,8 +94,12 @@ class ValidatorDetailPage extends StatelessWidget {
                                             detail.cmixId.length - 8,
                                             detail.cmixId.length)
                                     : '',
-                                points: detail.points.toInt(),
-                                currentPoints: detail.currentPoints.toInt(),
+                                points: detail.points == null
+                                    ? 0
+                                    : detail.points.toInt(),
+                                currentPoints: detail.currentPoints == null
+                                    ? 0
+                                    : detail.currentPoints.toInt(),
                               ),
                               GestureDetector(
                                 child: Container(
