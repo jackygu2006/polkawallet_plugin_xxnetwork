@@ -11,6 +11,8 @@ const Map<String, String> zhStaking = {
   'elected': '验证人',
   'waiting': '候选',
   'filter.comm': '不看 20%+ 佣金',
+  'order.points': '按幸运值排序',
+  'order.return': '按预估收益排序',
   'filter.id': '只看有ID的节点',
   'nominators': '提名人',
   'session': '时期',

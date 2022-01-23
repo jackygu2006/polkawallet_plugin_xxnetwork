@@ -4,14 +4,19 @@ import 'package:polkawallet_plugin_xxnetwork/utils/i18n/index.dart';
 import 'package:polkawallet_sdk/utils/i18n.dart';
 import 'package:polkawallet_ui/components/outlinedButtonSmall.dart';
 
+// ignore: must_be_immutable
 class ValidatorListFilter extends StatelessWidget {
   ValidatorListFilter(
       {this.onSearchChange,
       this.onFilterChange,
+      this.onOrderBy,
       this.filters = const [true, false]});
   final Function(String) onSearchChange;
   final Function(List<bool>) onFilterChange;
+  final Function(String) onOrderBy;
   final List<bool> filters;
+
+  var currentOrder = 'stake_return';
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +41,27 @@ class ValidatorListFilter extends StatelessWidget {
             margin: EdgeInsets.only(top: 8),
             child: Row(
               children: <Widget>[
+                // OutlinedButtonSmall(
+                //   active: filters[0] == true,
+                //   content: dic['filter.comm'],
+                //   onPressed: () {
+                //     onFilterChange([!filters[0], filters[1]]);
+                //   },
+                // ),
                 OutlinedButtonSmall(
-                  active: filters[0] == true,
-                  content: dic['filter.comm'],
-                  onPressed: () {
-                    onFilterChange([!filters[0], filters[1]]);
-                  },
-                ),
+                    active: true,
+                    content: dic['order.points'],
+                    onPressed: () {
+                      currentOrder = 'current_point';
+                      onOrderBy(currentOrder);
+                    }),
+                OutlinedButtonSmall(
+                    active: true,
+                    content: dic['order.return'],
+                    onPressed: () {
+                      currentOrder = 'stake_return';
+                      onOrderBy('stake_return');
+                    }),
                 OutlinedButtonSmall(
                   active: filters[1] == true,
                   content: dic['filter.id'],

@@ -46,6 +46,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
 
   bool _loading = false;
   List<bool> _filters = [true, false];
+  String _orderBy = 'stake_return';
   String _search = '';
 
   int _tab = 0;
@@ -237,9 +238,10 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                   '${dicStaking['overview.total']}/${dicStaking['overview.totalStakable']} (${(stakedRatio * 100).toStringAsFixed(1)}%)',
                   style: TextStyle(fontSize: 12),
                 ),
+                Text('', style: TextStyle(fontSize: 8)),
                 Text(
                   Fmt.priceFloorBigInt(totalStaked, decimals, lengthFixed: 0) +
-                      '/' +
+                      ' / ' +
                       Fmt.priceFloorBigInt(totalIssuance, decimals,
                           lengthFixed: 0) +
                       ' ' +
@@ -551,6 +553,13 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                   });
                 }
               },
+              onOrderBy: (value) {
+                if (value != _orderBy) {
+                  setState(() {
+                    _orderBy = value;
+                  });
+                }
+              },
               onSearchChange: (value) {
                 if (value != _search) {
                   setState(() {
@@ -616,8 +625,12 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
           // filter list
           ls = PluginFmt.filterValidatorList(ls, _filters, _search,
               widget.plugin.store.accounts.addressIndexMap);
-          // sort list
-          ls.sort((a, b) => a.rankReward < b.rankReward ? 1 : -1);
+          // sort list ######
+          if (_orderBy == '' || _orderBy == 'stake_return')
+            ls.sort((a, b) => a.rankReward < b.rankReward ? 1 : -1);
+          else if (_orderBy == 'current_point')
+            ls.sort((a, b) => a.currentPoints < b.currentPoints ? 1 : -1);
+
           if (_tab == 1) {
             ls.sort((a, b) {
               final aLength = widget.plugin.store.staking

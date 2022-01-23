@@ -11,6 +11,8 @@ const Map<String, String> enStaking = {
   'elected': 'Elected',
   'waiting': 'Waiting',
   'filter.comm': 'no 20%+ comm',
+  'order.points': 'Order by Points',
+  'order.return': 'Order by Return',
   'filter.id': 'only have an ID',
   'nominators': 'Nominators',
   'session': 'Session',

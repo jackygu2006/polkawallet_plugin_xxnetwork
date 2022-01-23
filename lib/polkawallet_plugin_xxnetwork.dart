@@ -59,7 +59,7 @@ class PluginXxnetwork extends PolkawalletPlugin {
           genesisHash: name == network_name_protonet
               ? genesis_hash_protonet
               : genesis_hash_xxnetwork,
-          ss58: name == network_name_protonet ? 42 : 55, // ######
+          ss58: name == network_name_protonet ? 42 : 55,
           primaryColor:
               name == network_name_protonet ? protonet_teal : Colors.teal,
           gradientColor: name == network_name_protonet
