@@ -625,11 +625,21 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
           // filter list
           ls = PluginFmt.filterValidatorList(ls, _filters, _search,
               widget.plugin.store.accounts.addressIndexMap);
-          // sort list ######
+          // sort list
           if (_orderBy == '' || _orderBy == 'stake_return')
             ls.sort((a, b) => a.rankReward < b.rankReward ? 1 : -1);
-          else if (_orderBy == 'current_point')
-            ls.sort((a, b) => a.currentPoints < b.currentPoints ? 1 : -1);
+          else if (_orderBy == 'current_point') {
+            try {
+              ls.sort(
+                  (a, b) => a.currentPoints == null || b.currentPoints == null
+                      ? 1
+                      : a.currentPoints < b.currentPoints
+                          ? 1
+                          : -1);
+            } catch (e) {
+              print(e);
+            }
+          }
 
           if (_tab == 1) {
             ls.sort((a, b) {

@@ -88,7 +88,6 @@ class _ProfileContentState extends State<ProfileContent> {
   }
 
   Future<void> _onChangeNetwork() async {
-    print('jackygu _onChangeNetwork');
     final selected = await Navigator.of(context).pushNamed(SelectListPage.route,
         arguments: widget.plugins
             .map((e) => ListItemData(title: e.basic.name, subtitle: ''))
@@ -112,7 +111,6 @@ class _ProfileContentState extends State<ProfileContent> {
   }
 
   Future<void> _onChangeNode() async {
-    print('jackygu _onChangeNode');
     final selected = await Navigator.of(context).pushNamed(SelectListPage.route,
         arguments: widget.network.nodeList
             .map((e) => ListItemData(title: e.name, subtitle: e.endpoint))
@@ -122,7 +120,6 @@ class _ProfileContentState extends State<ProfileContent> {
         widget.setConnectedNode(null);
       }
       final node = widget.network.nodeList[selected];
-      print('jackygu selected node' + node.endpoint);
       final res =
           await widget.network.sdk.api.connectNode(widget.keyring, [node]);
       widget.setConnectedNode(res);
