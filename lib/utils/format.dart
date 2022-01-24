@@ -48,9 +48,9 @@ class PluginFmt {
       List<bool> filters, String search, Map accIndexMap) {
     ls.retainWhere((i) {
       // filters[0], no 20%+ comm
-      if (filters[0]) {
-        if (i.commission > 20) return false;
-      }
+      // if (filters[0]) {
+      //   if (i.commission > 20) return false;
+      // }
 
       // filters[1], only with an ID
       final Map accInfo = accIndexMap[i.accountId];
@@ -62,6 +62,7 @@ class PluginFmt {
 
       // filter by search input
       final value = search.trim().toLowerCase();
+
       return UI
               .accountDisplayNameString(i.accountId, accInfo)
               .toLowerCase()
