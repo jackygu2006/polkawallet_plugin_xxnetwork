@@ -62,13 +62,13 @@ class ValidatorListFilter extends StatelessWidget {
                       currentOrder = 'stake_return';
                       onOrderBy('stake_return');
                     }),
-                OutlinedButtonSmall(
-                  active: filters[1] == true,
-                  content: dic['filter.id'],
-                  onPressed: () {
-                    onFilterChange([filters[0], !filters[1]]);
-                  },
-                ),
+                // OutlinedButtonSmall(
+                //   active: filters[1] == true,
+                //   content: dic['filter.id'],
+                //   onPressed: () {
+                //     onFilterChange([filters[0], !filters[1]]);
+                //   },
+                // ),
               ],
             ),
           )

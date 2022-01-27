@@ -38,7 +38,7 @@ const Map<String, String> zhStaking = {
   'current.ttlIssuance': '总可质押量',
   'current.nextReward': '下一轮预估奖励',
   'everage.points': '平均幸运值',
-  'reward': '预估收益',
+  'reward': '提名收益',
   'judgements': '评价',
   'blocking': '不可提名',
   'txs': '操作记录',
