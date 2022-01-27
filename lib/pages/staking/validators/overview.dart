@@ -29,6 +29,7 @@ import 'package:polkawallet_ui/utils/i18n.dart';
 import 'package:polkawallet_ui/utils/index.dart';
 
 const validator_list_page_size = 100;
+const official_nodes_count = 8;
 
 class StakingOverviewPage extends StatefulWidget {
   StakingOverviewPage(this.plugin, this.keyring);
@@ -46,7 +47,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
 
   bool _loading = false;
   List<bool> _filters = [true, false];
-  String _orderBy = 'stake_return';
+  String _orderBy = 'current_point'; //'stake_return';
   String _search = '';
 
   int _tab = 0;
@@ -217,9 +218,14 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
       totalIssuance = Fmt.balanceInt(overview['totalIssuance']);
     }
 
-    BigInt nextEraReward = BigInt.zero;
-    if (overview['nextEraReward'] != null) {
-      nextEraReward = Fmt.balanceInt('0x${overview['nextEraReward']}');
+    BigInt nextEraRewardExceptOfficial = BigInt.zero;
+    BigInt electedCount = Fmt.balanceInt(
+        widget.plugin.store.staking.electedInfo.length.toString());
+    if (overview['nextEraReward'] != null && electedCount > BigInt.zero) {
+      BigInt nextEraReward = Fmt.balanceInt('0x${overview['nextEraReward']}');
+      nextEraRewardExceptOfficial = BigInt.from(nextEraReward *
+          (electedCount - BigInt.from(official_nodes_count)) /
+          electedCount);
     }
 
     Color actionButtonColor = Theme.of(context).primaryColor;
@@ -285,7 +291,8 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                 InfoItem(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     title: dicStaking['current.nextReward'],
-                    content: Fmt.priceFloorBigInt(nextEraReward, decimals,
+                    content: Fmt.priceFloorBigInt(
+                            nextEraRewardExceptOfficial, decimals,
                             lengthFixed: 0) +
                         ' ' +
                         symbol.toUpperCase())
@@ -624,13 +631,14 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
           List<ValidatorData> ls = _tab == 0
               ? widget.plugin.store.staking.electedInfo.toList()
               : widget.plugin.store.staking.nextUpsInfo.toList();
+
           // filter list
           ls = PluginFmt.filterValidatorList(ls, _filters, _search,
               widget.plugin.store.accounts.addressIndexMap);
           // sort list
-          if (_orderBy == '' || _orderBy == 'stake_return')
+          if (_orderBy == 'stake_return')
             ls.sort((a, b) => a.rankReward < b.rankReward ? 1 : -1);
-          else if (_orderBy == 'current_point') {
+          else if (_orderBy == 'current_point' || _orderBy == '') {
             try {
               ls.sort(
                   (a, b) => a.currentPoints == null || b.currentPoints == null
@@ -689,6 +697,8 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
       },
     );
   }
+
+  validator(ValidatorData e) {}
 }
 
 enum NomStatus { active, over, inactive, waiting }

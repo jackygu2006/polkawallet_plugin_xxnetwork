@@ -94,7 +94,17 @@ class Validator extends StatelessWidget {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(dic['reward']),
+                      // ######
+                      // Text("节点收益",
+                      //     style: TextStyle(
+                      //         fontSize: 12,
+                      //         color: Theme.of(context).unselectedWidgetColor)),
+                      // Text("320xx"),
+                      // Text("", style: TextStyle(fontSize: 6)),
+                      Text(dic['reward'],
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Theme.of(context).unselectedWidgetColor)),
                       Text(validator.isActive
                           ? '${validator.stakedReturnCmp.toStringAsFixed(2)}%'
                           : '~'),
