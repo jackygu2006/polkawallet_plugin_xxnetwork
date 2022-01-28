@@ -95,12 +95,13 @@ class Validator extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       // ######
-                      // Text("节点收益",
-                      //     style: TextStyle(
-                      //         fontSize: 12,
-                      //         color: Theme.of(context).unselectedWidgetColor)),
-                      // Text("320xx"),
-                      // Text("", style: TextStyle(fontSize: 6)),
+                      Text("节点总收益",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Theme.of(context).unselectedWidgetColor)),
+                      Text(Fmt.balance(validator.nodeReward.toString(), 9) +
+                          " XX"),
+                      Text("", style: TextStyle(fontSize: 6)),
                       Text(dic['reward'],
                           style: TextStyle(
                               fontSize: 12,

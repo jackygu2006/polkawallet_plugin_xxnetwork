@@ -41,6 +41,7 @@ abstract class _ValidatorData {
   BigInt total = BigInt.zero;
   BigInt bondOwn = BigInt.zero;
   BigInt bondOther = BigInt.zero;
+  BigInt nodeReward = BigInt.zero;
 
   bool isActive = false;
   bool isElected = false;

@@ -51,6 +51,9 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
   String _search = '';
 
   int _tab = 0;
+  BigInt nextEraReward;
+  BigInt electedCount;
+  BigInt avgPoints;
 
   Future<void> _refreshData() async {
     if (_loading) {
@@ -219,14 +222,19 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
     }
 
     BigInt nextEraRewardExceptOfficial = BigInt.zero;
-    BigInt electedCount = Fmt.balanceInt(
+    nextEraReward = BigInt.zero;
+    electedCount = Fmt.balanceInt(
         widget.plugin.store.staking.electedInfo.length.toString());
     if (overview['nextEraReward'] != null && electedCount > BigInt.zero) {
-      BigInt nextEraReward = Fmt.balanceInt('0x${overview['nextEraReward']}');
+      nextEraReward = Fmt.balanceInt('0x${overview['nextEraReward']}');
       nextEraRewardExceptOfficial = BigInt.from(nextEraReward *
           (electedCount - BigInt.from(official_nodes_count)) /
           electedCount);
     }
+
+    avgPoints = overview['avgPoints'] == null
+        ? BigInt.zero
+        : Fmt.balanceInt(overview['avgPoints'].toString());
 
     Color actionButtonColor = Theme.of(context).primaryColor;
     Color disabledColor = Theme.of(context).disabledColor;
@@ -631,6 +639,17 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
           List<ValidatorData> ls = _tab == 0
               ? widget.plugin.store.staking.electedInfo.toList()
               : widget.plugin.store.staking.nextUpsInfo.toList();
+
+          // Update nodeReward // ######
+          for (int i = 0; i < ls.length; i++) {
+            BigInt currentPoints = ls[i].currentPoints == null
+                ? BigInt.zero
+                : BigInt.from(ls[i].currentPoints);
+            ls[i].nodeReward = avgPoints == BigInt.zero
+                ? BigInt.zero
+                : BigInt.from(
+                    nextEraReward * currentPoints / (electedCount * avgPoints));
+          }
 
           // filter list
           ls = PluginFmt.filterValidatorList(ls, _filters, _search,

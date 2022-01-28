@@ -41,6 +41,7 @@ const Map<String, String> enStaking = {
   'current.nextReward': 'Est. Next Reward',
   'everage.points': 'Avg Points',
   'reward': 'NMT. APR',
+  'node.reward': 'Node Rwd.',
   'judgements': 'Judgements',
   'blocking': 'Blocks nominations',
   'txs': 'Tx History',
