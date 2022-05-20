@@ -640,7 +640,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
               ? widget.plugin.store.staking.electedInfo.toList()
               : widget.plugin.store.staking.nextUpsInfo.toList();
 
-          // Update nodeReward // ######
+          // Update nodeReward
           for (int i = 0; i < ls.length; i++) {
             BigInt currentPoints = ls[i].currentPoints == null
                 ? BigInt.zero

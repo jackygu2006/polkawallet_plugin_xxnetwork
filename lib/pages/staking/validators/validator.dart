@@ -94,7 +94,6 @@ class Validator extends StatelessWidget {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      // ######
                       Text("节点总收益",
                           style: TextStyle(
                               fontSize: 12,

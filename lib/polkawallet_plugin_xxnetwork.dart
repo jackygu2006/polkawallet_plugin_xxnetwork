@@ -71,7 +71,7 @@ class PluginXxnetwork extends PolkawalletPlugin {
               'packages/polkawallet_plugin_xxnetwork/assets/images/public/$name.png'),
           iconDisabled: Image.asset(
               'packages/polkawallet_plugin_xxnetwork/assets/images/public/${name}_gray.png'),
-          jsCodeVersion: 110,
+          jsCodeVersion: 167,
           isTestNet: false,
           isXCMSupport: name == network_name_protonet,
         ),

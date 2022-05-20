@@ -117,7 +117,6 @@ class ApiGov {
   }
 
   Future<TreasuryOverviewData> queryTreasuryOverview() async {
-    // ######
     final data = await api.gov.queryTreasuryOverview();
     store.gov.setTreasuryOverview(data);
 
